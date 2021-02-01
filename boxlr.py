@@ -13,8 +13,8 @@ payload={
 }
 }
 
-#url="http://192.168.124.43:8882/sendData"
-url="http://192.168.124.43:8088/sendData"
+url="http://192.168.124.43:8882/sendData"
+#url="http://192.168.124.43:8088/sendData"
 
 import json
 headers = {
