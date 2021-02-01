@@ -1,7 +1,7 @@
 import requests
 
 payload={
-"serialNumber": "009bd5be75ad1dd1",
+"serialNumber": "009bd5be7",
 "devicepass": "111111",
 "tasktype": "6",
 "data": {
@@ -21,7 +21,7 @@ headers = {
     "Content-Type": "application/json; charset=UTF-8"
     }
 payload={
-	"serialNumber": "009bd5be75ad1dd1",
+	"serialNumber": "068bebf627d6ab24",
 	"devicepass": "111111",
 	"tasktype": "29",
 	"data": ""
