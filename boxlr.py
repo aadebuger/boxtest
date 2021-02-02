@@ -22,7 +22,7 @@ headers = {
     }
 payload={
 	"serialNumber": "068bebf627d6ab24",
-	"devicepass": "111111",
+	"devicepass": "12345",
 	"tasktype": "29",
 	"data": ""
 }
