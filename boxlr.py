@@ -29,3 +29,9 @@ payload={
 response = requests.post(url, data=json.dumps(payload), headers=headers).text
 print(response)
 print("hello")
+
+url="http://192.168.124.43:8088/OpenBox"
+body='[10]'
+response = requests.post(url, body).text
+print(response)
+print("hello")
