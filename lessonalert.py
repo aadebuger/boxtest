@@ -102,6 +102,7 @@ def isLessonworktime(lesson1):
     return ret
 
 def alert():
+        student_lists= lessonlist()
         todaylesson=filter(lambda lesson:isTodaylesson(lesson),student_list)
         todaylessonv= list(todaylesson)
         workinglesson = filter(lambda lesson: isLessonworktime(lesson),todaylessonv)
