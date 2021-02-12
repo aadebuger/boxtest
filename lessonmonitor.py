@@ -43,7 +43,7 @@ def monitorp(serial):
         Todo = leancloud.Object.extend('Androiddevice')
         query = Todo.query
         query.equal_to('serial', serial);
-        advice = None
+        adevice = None
         try:
             adevice = query.first()
         except Exception as e:
