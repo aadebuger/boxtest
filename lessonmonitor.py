@@ -42,7 +42,7 @@ def androiddevicelist():
 def monitorp(serial):
         Todo = leancloud.Object.extend('Androiddevice')
         query = Todo.query
-        query.equalTo('serial', serial);
+        query.equal_to('serial', serial);
         adevice = query.first()
         if adevice is None:
             newAndroiddevice(serial)
