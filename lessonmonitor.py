@@ -47,7 +47,7 @@ def monitorp(serial):
         if adevice is None:
             newAndroiddevice(serial)
         else:
-			updateAndroiddevice(adevice,serial)
+            updateAndroiddevice(adevice,serial)
 
 def montiorlesson(lesson):
 		serialv= checked(lesson)
