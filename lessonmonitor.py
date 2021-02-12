@@ -43,7 +43,11 @@ def monitorp(serial):
         Todo = leancloud.Object.extend('Androiddevice')
         query = Todo.query
         query.equal_to('serial', serial);
-        adevice = query.first()
+        advice = None
+        try:
+            adevice = query.first()
+        except Except:
+            print("except ")
         if adevice is None:
             newAndroiddevice(serial)
         else:
@@ -83,4 +87,4 @@ for item in devices:
 		print("model=",d.prop.model)
 		print("device=",d.prop.device)
 		print("moddel=",d.prop.get("ro.product.model"))
-		monitorp(serial)
+		monitorp(item.serial)
