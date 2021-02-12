@@ -66,7 +66,7 @@ def lessonlist():
     query = Student.query
     query.descending('createdAt')
     student_list = query.find()
-    return student_lists
+    return student_list
 
 import arrow
 def isToday(datadate):
