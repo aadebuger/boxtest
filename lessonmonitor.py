@@ -46,8 +46,8 @@ def monitorp(serial):
         advice = None
         try:
             adevice = query.first()
-        except Except:
-            print("except ")
+        except Exception as e:
+            print("except ",e)
         if adevice is None:
             newAndroiddevice(serial)
         else:
