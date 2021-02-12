@@ -1,4 +1,6 @@
 import adbutils
+from apscheduler.schedulers.background import BackgroundScheduler
+import time
 
 
 #/Users/aadebuger/Library/Android/sdk/platform-tools
@@ -105,7 +107,7 @@ def alert():
         workinglesson = filter(lambda lesson: isLessonworktime(lesson),todaylessonv)
 
         print(list(workinglesson))
-        
+
 #kangding
 import os
 import json
@@ -113,8 +115,21 @@ import leancloud
 from leancloud.utils import encode
 #os.environ.setdefault('LEANCLOUD_API_SERVER', "http://localhost:5000")
 
+def startMonitor():
+#    scheduler.add_job(event_monitor,'interval', minutes=1) 
+    scheduler.add_job(alert_monitor,'interval', seconds=60) 
+#    scheduler.add_job(appointmentUpdatetask, 'cron', hour=1, minute=10)
+
+    scheduler.daemonic = False 
+    scheduler.start()
 
 os.environ['LEANCLOUD_API_SERVER'] = os.environ.get('LEANCLOUD_API_SERVER',"http://192.168.31.82:7000")
 
 init_leancloud_client()
+scheduler = BackgroundScheduler()
+startMonitor()
+
+time.sleep(50000000) 
+
+
 
