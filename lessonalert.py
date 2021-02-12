@@ -117,7 +117,7 @@ from leancloud.utils import encode
 
 def startMonitor():
 #    scheduler.add_job(event_monitor,'interval', minutes=1) 
-    scheduler.add_job(alert_monitor,'interval', seconds=60) 
+    scheduler.add_job(alert,'interval', seconds=60) 
 #    scheduler.add_job(appointmentUpdatetask, 'cron', hour=1, minute=10)
 
     scheduler.daemonic = False 
