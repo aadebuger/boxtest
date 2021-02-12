@@ -54,9 +54,9 @@ import json
 import leancloud
 from leancloud.utils import encode
 #os.environ.setdefault('LEANCLOUD_API_SERVER', "http://localhost:5000")
-os.environ.setdefault('LEANCLOUD_API_SERVER', "http://192.168.31.82:7000")
-print(os.environ.get('LEANCLOUD_API_SERVER'))
-os.environ['LEANCLOUD_API_SERVER'] = 'http://192.168.31.82:7000'
+#os.environ.setdefault('LEANCLOUD_API_SERVER', "http://192.168.31.82:7000")
+#print(os.environ.get('LEANCLOUD_API_SERVER'))
+os.environ['LEANCLOUD_API_SERVER'] = os.environ.get('LEANCLOUD_API_SERVER',"http://192.168.31.82:7000")
 init_leancloud_client()
 adb = adbutils.AdbClient(host="127.0.0.1", port=5037)
 print(adb.devices())
