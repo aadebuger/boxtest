@@ -77,16 +77,18 @@ def querybyid(id):
 for id in range(1,100):
 	querybyid(id)
 
-payload={
-	"serialNumber": "068bebf627d6ab24",
-	"devicepass": "123456",
-	"tasktype": "38",
-	"data": "[1]"
-}
+def queryrulebyid(id):
+	payload={
+		"serialNumber": "068bebf627d6ab24",
+		"devicepass": "123456",
+		"tasktype": "38",
+		"data": json.dumps(id)
+	}
 
-response = requests.post(url, data=json.dumps(payload), headers=headers).text
-print(response)
+	response = requests.post(url, data=json.dumps(payload), headers=headers).text
+	print(response)
 
+queryrulebyid(72)
 payload={
 	"serialNumber": "068bebf627d6ab24",
 	"devicepass": "123456",
