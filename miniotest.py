@@ -5,8 +5,8 @@ from minio import Minio
 # Initialize minioClient with an endpoint and access/secret keys.
 from minio.error import InvalidResponseError
 minioClient = Minio('localhost:9000',
-                    access_key='MINIO_ROOT_USER',
-                    secret_key='MINIO_ROOT_PASSWORD',
+                    access_key='minioadmin',
+                    secret_key='minioadmin',
                     secure=False)
 
 
