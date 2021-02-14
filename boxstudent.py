@@ -41,4 +41,7 @@ print(response)
 
 r = json.loads(response)
 print(r)
+print("taskid",r['taskid'])
+print("code",r["code"])
+print(data,r["data"])
 print("hello")
