@@ -1,5 +1,5 @@
 import requests
-
+import json
 
 #url="http://192.168.124.43:8882/sendData"
 url="http://192.168.124.43:8088/sendData"
@@ -38,4 +38,7 @@ payload={
 
 response = requests.post(url, data=json.dumps(payload), headers=headers).text
 print(response)
+
+r = json.loads(response.text)
+print(r)
 print("hello")
