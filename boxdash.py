@@ -53,6 +53,7 @@ def personstatus():
 def startMonitor():
 #    scheduler.add_job(event_monitor,'interval', minutes=1) 
     scheduler.add_job(boxstatus,'interval', seconds=20) 
+    scheduler.add_job(personstatus,'interval', seconds=30) 
 #    scheduler.add_job(appointmentUpdatetask, 'cron', hour=1, minute=10)
 
     scheduler.daemonic = False 
