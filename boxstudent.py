@@ -74,5 +74,5 @@ def querybyid(id):
 	response = requests.post(url, data=json.dumps(payload), headers=headers).text
 	print("query by id=",response)
 	print("hello")
-for id in [1,100]:
+for id in range(1,100):
 	querybyid(id)
