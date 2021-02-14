@@ -53,7 +53,7 @@ print("hello")
 
 todaydate = arrow.utcnow()
 todaydate=todaydate.to('Asia/Shanghai')
-yest = arw.shift(days=-100)
+yest = todaydate.shift(days=-100)
 
 datav=[0,100,yest.timestamp*1000,todaydate.timestamp*1000]
 payload={
