@@ -63,13 +63,16 @@ payload={
 response = requests.post(url, data=json.dumps(payload), headers=headers).text
 print(response)
 print("hello")
-idv=[1]
-payload={
-	"serialNumber": "068bebf627d6ab24",
-	"devicepass": "123456",
-	"tasktype": "9",
-	"data": json.dumps(idv)
-}
-response = requests.post(url, data=json.dumps(payload), headers=headers).text
-print("query by id=",response)
-print("hello")
+def querybyid(id):
+	idv=[id]
+	payload={
+		"serialNumber": "068bebf627d6ab24",
+		"devicepass": "123456",
+		"tasktype": "9",
+		"data": json.dumps(idv)
+	}
+	response = requests.post(url, data=json.dumps(payload), headers=headers).text
+	print("query by id=",response)
+	print("hello")
+for id in [1,100]:
+	querybyid(id)
