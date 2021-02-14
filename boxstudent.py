@@ -86,3 +86,21 @@ payload={
 
 response = requests.post(url, data=json.dumps(payload), headers=headers).text
 print(response)
+
+payload={
+	"serialNumber": "068bebf627d6ab24",
+	"devicepass": "123456",
+	"tasktype": "37",
+	"data": {
+		"name": "早上1",
+		"type": 0,
+		"week": "[true,false,true,true,true,true,true]",
+		"startTime": "00:00",
+		"endTime": "23:59"
+	}
+}
+
+response = requests.post(url, data=json.dumps(payload), headers=headers).text
+print(response)
+
+
