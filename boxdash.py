@@ -35,6 +35,21 @@ def boxstatus():
     for item in r["data"]:
         print(item)
     print("hello")
+def personstatus():
+    todaydate = arrow.utcnow()
+    todaydate=todaydate.to('Asia/Shanghai')
+    yest = todaydate.shift(days=-100)
+
+    datav=[0,200,yest.timestamp*1000,todaydate.timestamp*1000]
+    payload={
+        "serialNumber": "068bebf627d6ab24",
+        "devicepass": "123456",
+        "tasktype": "7",
+        "data": json.dumps(datav)
+    }
+    response = requests.post(url, data=json.dumps(payload), headers=headers).text
+    print(response)	
+
 def startMonitor():
 #    scheduler.add_job(event_monitor,'interval', minutes=1) 
     scheduler.add_job(boxstatus,'interval', seconds=20) 
