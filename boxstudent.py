@@ -44,4 +44,6 @@ print(r)
 #print("taskid",r['taskid'])
 print("code",r["code"])
 print("data",r["data"])
+for item in r["data"]:
+	print(item)
 print("hello")
