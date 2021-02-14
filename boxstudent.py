@@ -54,15 +54,7 @@ todaydate = arrow.utcnow()
 todaydate=todaydate.to('Asia/Shanghai')
 yest = todaydate.shift(days=-100)
 
-datav=[0,100,yest.timestamp*1000,todaydate.timestamp*1000]
-payload={
-	"serialNumber": "068bebf627d6ab24",
-	"devicepass": "123456",
-	"tasktype": "7",
-	"data": json.dumps(datav)
-}
-response = requests.post(url, data=json.dumps(payload), headers=headers).text
-print(response)
+
 print("hello")
 def querybyid(id):
 	idv=[id]
@@ -126,5 +118,15 @@ payload={
 
 response = requests.post(url, data=json.dumps(payload), headers=headers).text
 print(response)
-uploadperson()
+#uploadperson()
+
+datav=[0,200,yest.timestamp*1000,todaydate.timestamp*1000]
+payload={
+	"serialNumber": "068bebf627d6ab24",
+	"devicepass": "123456",
+	"tasktype": "7",
+	"data": json.dumps(datav)
+}
+response = requests.post(url, data=json.dumps(payload), headers=headers).text
+print(response)
 
