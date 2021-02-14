@@ -2,6 +2,9 @@ import requests
 import json
 import arrow
 import base64
+import time
+from apscheduler.schedulers.background import BackgroundScheduler
+
 #url="http://192.168.124.43:8882/sendData"
 url="http://192.168.124.43:8088/sendData"
 
@@ -27,11 +30,18 @@ def boxstatus():
     print(response)
 
     r = json.loads(response)
-    print(r)
     #print("taskid",r['taskid'])
     print("code",r["code"])
-    print("data",r["data"])
     for item in r["data"]:
         print(item)
     print("hello")
-boxstatus()
+def startMonitor():
+#    scheduler.add_job(event_monitor,'interval', minutes=1) 
+    scheduler.add_job(boxstatus,'interval', seconds=20) 
+#    scheduler.add_job(appointmentUpdatetask, 'cron', hour=1, minute=10)
+
+    scheduler.daemonic = False 
+    scheduler.start()
+
+startMonitor()
+time.sleep(1000000000)
