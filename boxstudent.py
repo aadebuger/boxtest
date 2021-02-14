@@ -47,9 +47,7 @@ print("data",r["data"])
 for item in r["data"]:
 	print(item)
 print("hello")
-response = requests.post(url, data=json.dumps(payload), headers=headers).text
-print(response)
-print("hello")
+
 
 todaydate = arrow.utcnow()
 todaydate=todaydate.to('Asia/Shanghai')
@@ -64,4 +62,14 @@ payload={
 }
 response = requests.post(url, data=json.dumps(payload), headers=headers).text
 print(response)
+print("hello")
+idv=[1]
+payload={
+	"serialNumber": "068bebf627d6ab24",
+	"devicepass": "123456",
+	"tasktype": "9",
+	"data": json.dumps(idv)
+}
+response = requests.post(url, data=json.dumps(payload), headers=headers).text
+print("query by id=",response)
 print("hello")
