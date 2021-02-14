@@ -42,6 +42,6 @@ def startMonitor():
 
     scheduler.daemonic = False 
     scheduler.start()
-
+scheduler = BackgroundScheduler()
 startMonitor()
 time.sleep(1000000000)
