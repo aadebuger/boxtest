@@ -1,5 +1,5 @@
 import adbutils
-
+from leancloud.utils import encode
 
 #/Users/aadebuger/Library/Android/sdk/platform-tools
 def init_leancloud_client():
@@ -31,7 +31,7 @@ def updateAndroiddevice(androido,serial):
 def studentlist():
     Todo = leancloud.Object.extend('Student')
     query = Todo.query
-    query.equal_to('synciing', '1')
+    query.equal_to('syncing', '1')
     query_result = query.find()
     conv=[]
     for item in query_result:
@@ -44,6 +44,8 @@ def studentlist():
 def studentsync(item):
         print("sync")
         print(item)
+        value=encode(item,dump_objects=True)
+        print(value)
 def monitorstudent():
         slist = studentlist()
         map(lambda student:studentsync(student), list(slist))
