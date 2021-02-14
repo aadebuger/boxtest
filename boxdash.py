@@ -50,7 +50,7 @@ def personstatus():
     response = requests.post(url, data=json.dumps(payload), headers=headers).text
     r = json.loads(response)
     for item in r["data"]:
-        print(item)
+        print("p=",item)
 def startMonitor():
 #    scheduler.add_job(event_monitor,'interval', minutes=1) 
     scheduler.add_job(boxstatus,'interval', seconds=20) 
