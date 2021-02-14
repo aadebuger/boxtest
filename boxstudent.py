@@ -39,6 +39,6 @@ payload={
 response = requests.post(url, data=json.dumps(payload), headers=headers).text
 print(response)
 
-r = json.loads(response.text)
+r = json.loads(response)
 print(r)
 print("hello")
