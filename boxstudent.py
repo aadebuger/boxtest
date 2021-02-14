@@ -1,6 +1,7 @@
 import requests
 import json
 import arrow
+import base64
 #url="http://192.168.124.43:8882/sendData"
 url="http://192.168.124.43:8088/sendData"
 
@@ -87,6 +88,27 @@ def queryrulebyid(id):
 
 	response = requests.post(url, data=json.dumps(payload), headers=headers).text
 	print(response)
+
+def uploadperson():
+	data= {
+		"name": "测试2",
+		"boxnum": 1,
+		"type": 1,
+		"takeboxPass": "123",
+		"base64": ""	}
+	with open("test.jpg","rb") as f:
+		base64_data = base64.b64encode(f.read())
+		data['base64'] = base64_data
+
+	payload={
+		"serialNumber": "068bebf627d6ab24",
+		"devicepass": "123456",
+		"tasktype": "6",
+		"data": json.dumps(data)
+	}
+	response = requests.post(url, data=json.dumps(payload), headers=headers).text
+	print(response)
+
 
 queryrulebyid(72)
 payload={
