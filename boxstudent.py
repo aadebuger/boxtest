@@ -96,7 +96,7 @@ def uploadperson():
 		"type": 1,
 		"takeboxPass": "123",
 		"base64": ""	}
-	with open("test.jpg","rb") as f:
+	with open("test.jpeg","rb") as f:
 		base64_data = base64.b64encode(f.read())
 		data['base64'] = base64_data
 
