@@ -28,3 +28,14 @@ payload={
 response = requests.post(url, data=json.dumps(payload), headers=headers).text
 print(response)
 print("hello")
+
+payload={
+	"serialNumber": "068bebf627d6ab24",
+	"devicepass": "123456",
+	"tasktype": "23",
+	"data": ""
+}
+
+response = requests.post(url, data=json.dumps(payload), headers=headers).text
+print(response)
+print("hello")
