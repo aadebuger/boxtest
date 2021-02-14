@@ -76,3 +76,13 @@ def querybyid(id):
 	print("hello")
 for id in range(1,100):
 	querybyid(id)
+
+payload={
+	"serialNumber": "068bebf627d6ab24",
+	"devicepass": "123456",
+	"tasktype": "38",
+	"data": ""
+}
+
+response = requests.post(url, data=json.dumps(payload), headers=headers).text
+print(response)
