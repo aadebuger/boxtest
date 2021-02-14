@@ -14,17 +14,23 @@ def init_leancloud_client():
     print("leancloud init success with app_id: {}, app_key: {}, region: {}".format(LEANCLOUD_APP_ID, LEANCLOUD_APP_KEY,
                                                                                    LEANCLOUD_REGION))
 
-def newAndroiddevice(serial):
+def newAndroiddevice(serial,name,model,device):
     TestObject = leancloud.Object.extend('Androiddevicenew')
     test_object = TestObject()
     test_object.set('serial',serial)
+    test_object.set('name',name)
+    test_object.set('model',model)
+    test_object.set('device',device)
 
     test_object.save()
     print(test_object)
-def updateAndroiddevice(androido,serial):
+def updateAndroiddevice(androido,serial,name,model,device):
 
     androido.set('serial',serial)
-
+    androido.set('name',name)
+    androido.set('model',model)
+    androido.set('device',device)
+    
     androido.save()
     print(androido)
     
@@ -39,13 +45,13 @@ def androiddevicelist():
         print(value)
         conv.append(item)
     return list(conv)
-def monitorp(serial):
+def monitorp(serial,name,model,device):
 		devicesvv= androiddevicelist()
 		devicesv= list(devicesvv)
 		if len(devicesv)==0:
-			newAndroiddevice(serial)
+			newAndroiddevice(serial,name,model,device)
 		else:
-			updateAndroiddevice(devicesv[0],serial)
+			updateAndroiddevice(devicesv[0],serial,name,model,device)
 
 
 #kangding
