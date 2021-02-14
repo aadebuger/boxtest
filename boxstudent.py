@@ -1,6 +1,6 @@
 import requests
 import json
-
+import arrow
 #url="http://192.168.124.43:8882/sendData"
 url="http://192.168.124.43:8088/sendData"
 
@@ -46,4 +46,22 @@ print("code",r["code"])
 print("data",r["data"])
 for item in r["data"]:
 	print(item)
+print("hello")
+response = requests.post(url, data=json.dumps(payload), headers=headers).text
+print(response)
+print("hello")
+
+todaydate = arrow.utcnow()
+todaydate=todaydate.to('Asia/Shanghai')
+yest = arw.shift(days=-100)
+
+datav=[0,100,yest.timestamp*1000,todaydate.timestamp*1000]
+payload={
+	"serialNumber": "068bebf627d6ab24",
+	"devicepass": "123456",
+	"tasktype": "7",
+	"data": json.dumps(datav)
+}
+response = requests.post(url, data=json.dumps(payload), headers=headers).text
+print(response)
 print("hello")
