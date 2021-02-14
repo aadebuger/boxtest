@@ -98,7 +98,7 @@ def uploadperson():
 		"base64": ""	}
 	with open("test.jpeg","rb") as f:
 		base64_data = base64.b64encode(f.read())
-		data['base64'] = base64_data
+		data['base64'] = base64_data.decode("utf8")
 
 	payload={
 		"serialNumber": "068bebf627d6ab24",
