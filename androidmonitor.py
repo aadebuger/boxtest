@@ -80,4 +80,4 @@ for item in devices:
 		print(d.prop.model)
 		print(d.prop.device)
 		print(d.prop.get("ro.product.model"))
-		monitorp(item.serial)
+		monitorp(item.serial,d.prop.name,d.prop.model,d.prop.device)
