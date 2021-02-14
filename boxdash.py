@@ -48,6 +48,7 @@ def personstatus():
         "data": json.dumps(datav)
     }
     response = requests.post(url, data=json.dumps(payload), headers=headers).text
+    r = json.loads(response)
     for item in r["data"]:
         print(item)
 def startMonitor():
