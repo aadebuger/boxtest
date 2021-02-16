@@ -1,5 +1,6 @@
 import os
 import leancloud
+from leancloud.utils import encode
 os.environ['LEANCLOUD_API_SERVER'] = os.environ.get('LEANCLOUD_API_SERVER',"http://192.168.31.82:7000")
 
 def init_leancloud_client():
@@ -13,7 +14,7 @@ def init_leancloud_client():
     leancloud.use_region(LEANCLOUD_REGION)
     print("leancloud init success with app_id: {}, app_key: {}, region: {}".format(LEANCLOUD_APP_ID, LEANCLOUD_APP_KEY,
                                                                                    LEANCLOUD_REGION))
-                                                                                   
+
 init_leancloud_client()
 
 def boxlist():
