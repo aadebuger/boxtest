@@ -1,6 +1,9 @@
 import adbutils
 from leancloud.utils import encode
-
+import requests
+import base64
+import time
+from apscheduler.schedulers.background import BackgroundScheduler
 #/Users/aadebuger/Library/Android/sdk/platform-tools
 def init_leancloud_client():
     import os
@@ -46,19 +49,47 @@ def studentsync(item):
         print(item)
         value=encode(item,dump_objects=True)
         print(value)
+    
 def monitorstudent():
         slist = studentlist()
         map(lambda student:studentsync(student), list(slist))
 
+def uploadperson(name,imageUrl):
+    data= {
+		"name": name,
+		"boxnum": 1,
+		"type": 1,
+		"takeboxPass": "123",
+		"base64": ""	
+        }
+    ret = requests.get(imageUrl)
+    print(ret)
 
-    
+    base64_data = base64.b64encode(ret.content)
+    data['base64'] = base64_data.decode("utf8")
+
+    payload={
+		"serialNumber": "068bebf627d6ab24",
+		"devicepass": "123456",
+		"tasktype": "6",
+		"data": json.dumps(data)
+	}
+    response = requests.post(url, data=json.dumps(payload), headers=headers).text
+    print(response)
+   
 
 def montiorlesson(lesson):
 		serialv= checked(lesson)
 		if len(serialv)==0:
 			return 
 		
+def startMonitor():
+#    scheduler.add_job(event_monitor,'interval', minutes=1) 
+    scheduler.add_job(monitorstudent,'interval', seconds=10) 
+#    scheduler.add_job(appointmentUpdatetask, 'cron', hour=1, minute=10)
 
+    scheduler.daemonic = False 
+    scheduler.start()
 
 #kangding
 import os
@@ -72,4 +103,8 @@ os.environ['LEANCLOUD_API_SERVER'] = os.environ.get('LEANCLOUD_API_SERVER',"http
 
 init_leancloud_client()
 
-monitorstudent()
+scheduler = BackgroundScheduler()
+startMonitor()
+
+
+time.sleep(50000000) 
