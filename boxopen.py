@@ -2,7 +2,7 @@ url="http://192.168.124.43:8088/sendData"
 
 import json
 import sys
-
+import requests
 headers = {
     "Content-Type": "application/json; charset=UTF-8"
     }
