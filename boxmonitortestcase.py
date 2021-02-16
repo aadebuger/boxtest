@@ -1,3 +1,5 @@
+import os
+import leancloud
 os.environ['LEANCLOUD_API_SERVER'] = os.environ.get('LEANCLOUD_API_SERVER',"http://192.168.31.82:7000")
 
 init_leancloud_client()
