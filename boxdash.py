@@ -28,6 +28,8 @@ def boxstatus():
 
     response = requests.post(url, data=json.dumps(payload), headers=headers).text
     print(response)
+    with open('./boxstatus.json', 'w') as json_file:
+        json_file.write(response)
 
     r = json.loads(response)
     #print("taskid",r['taskid'])
