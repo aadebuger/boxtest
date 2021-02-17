@@ -60,7 +60,7 @@ def studentsync(item):
         print(value)
         print("boxNumber",item.get("boxNumber"))
         print("name",item.get("name"))
-        priint("imageUrl",item,get("imageUrl"))
+        print("imageUrl",item,get("imageurl"))
 
     
 def monitorstudent():
