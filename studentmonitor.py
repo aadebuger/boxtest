@@ -53,7 +53,7 @@ def studentlist():
         conv.append(item)
     return list(conv)
 
-def studentsync(item):
+def studentsync1(item):
         print("sync")
         print(item)
         value=encode(item,dump_objects=True)
@@ -61,7 +61,8 @@ def studentsync(item):
         print("boxNumber",item.get("boxNumber"))
         print("name",item.get("name"))
         print("imageUrl",item.get("imageurl"))
-
+def studentsync(item):
+        print("sync")
     
 def monitorstudent():
         slist = studentlist()
