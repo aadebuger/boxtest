@@ -17,13 +17,14 @@ def init_leancloud_client():
 
 init_leancloud_client()
 
-def newStudent(name,androidid,boxNumber):
+def newStudent(name,androidid,boxNumber,imageUrl):
 
     TestObject = leancloud.Object.extend("Student")
     test_object = TestObject()
     test_object.set('name',name)
     test_object.set('android',androidid)
     test_object.set('boxNumber',boxNumber)
+    test_object.set("imageurl",imageUrl)
     test_object.save()
     print(test_object)
 def studentlist():
@@ -41,7 +42,7 @@ def studentlist():
     return list(conv)
 studentv=studentlist()
 from leancloud.utils import encode
-testbox = studentv[1]
+testbox = studentv[len(studentv)-1]
 value=encode(testbox,dump_objects=True)
 print(value)
 print(testbox)
