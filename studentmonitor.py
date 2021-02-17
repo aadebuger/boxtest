@@ -93,6 +93,7 @@ def uploadperson(name,imageUrl,boxnumber):
     print("code",retdict['code'])
     print("msg",retdict["msg"])
     if retdict['code'] == 1:
+        print("keys=",retdict["data"].keys())
         print("id=",retdict['data']["id"])        
    
 
