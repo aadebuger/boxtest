@@ -17,15 +17,17 @@ def init_leancloud_client():
 
 init_leancloud_client()
 
-def newStudent(name,androidid,boxNumber):
+def newStudent(name,androidid,boxNumber,imageUrl):
 
     TestObject = leancloud.Object.extend("Student")
     test_object = TestObject()
     test_object.set('name',name)
     test_object.set('android',androidid)
     test_object.set('boxNumber',boxNumber)
+    test_object.set("imageurl",imageUrl)
     test_object.save()
     print(test_object)
+
 def boxlist():
     Todo = leancloud.Object.extend('Box')
     query = Todo.query
@@ -42,4 +44,4 @@ def boxlist():
 
 boxv=boxlist()
 from leancloud.utils import encode
-newStudent("test22","M22","8")
+newStudent("test22","M22","8","http://192.168.124.48:9000/boxhr/test.jpeg")
