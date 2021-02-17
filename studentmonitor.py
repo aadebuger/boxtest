@@ -52,16 +52,16 @@ def studentsync(item):
         print("boxNumber",item.get("boxNumber"))
         print("name",item.get("name"))
         priint("imageUrl",item,get("imageUrl"))
-        
+
     
 def monitorstudent():
         slist = studentlist()
         map(lambda student:studentsync(student), list(slist))
 
-def uploadperson(name,imageUrl):
+def uploadperson(name,imageUrl,boxnumber):
     data= {
 		"name": name,
-		"boxnum": 1,
+		"boxnum": boxnumber,
 		"type": 1,
 		"takeboxPass": "123",
 		"base64": ""	
@@ -108,7 +108,6 @@ os.environ['LEANCLOUD_API_SERVER'] = os.environ.get('LEANCLOUD_API_SERVER',"http
 init_leancloud_client()
 
 scheduler = BackgroundScheduler()
-startMonitor()
-
-
-time.sleep(50000000) 
+#startMonitor()
+#time.sleep(50000000) 
+uploadperson("test22",10,"http://192.168.124.48:9000/boxhr/test.jpeg")
