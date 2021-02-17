@@ -6,6 +6,9 @@ import time
 from apscheduler.schedulers.background import BackgroundScheduler
 #/Users/aadebuger/Library/Android/sdk/platform-tools
 url="http://192.168.124.43:8088/sendData"
+headers = {
+    "Content-Type": "application/json; charset=UTF-8"
+    }
 def init_leancloud_client():
     import os
 
