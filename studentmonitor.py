@@ -69,6 +69,9 @@ def studentsync1(item):
             print("update item")
         else:
             print("update fail item ")
+            item.set("syncing",0)
+            item.set("code",0)
+            item.set("msg",msg)
 def studentsync(item):
         print("sync")
     
