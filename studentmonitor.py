@@ -5,6 +5,7 @@ import base64
 import time
 from apscheduler.schedulers.background import BackgroundScheduler
 #/Users/aadebuger/Library/Android/sdk/platform-tools
+url="http://192.168.124.43:8088/sendData"
 def init_leancloud_client():
     import os
 
