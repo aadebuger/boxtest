@@ -70,7 +70,7 @@ def monitorstudent():
 #        map(lambda student:studentsync(student), slist)
         for item in slist:
             print("newitem",item)
-            studentsync(item)
+            studentsync1(item)
 
 def uploadperson(name,imageUrl,boxnumber):
     data= {
