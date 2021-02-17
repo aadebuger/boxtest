@@ -49,6 +49,10 @@ def studentsync(item):
         print(item)
         value=encode(item,dump_objects=True)
         print(value)
+        print("boxNumber",item.get("boxNumber"))
+        print("name",item.get("name"))
+        priint("imageUrl",item,get("imageUrl"))
+        
     
 def monitorstudent():
         slist = studentlist()
