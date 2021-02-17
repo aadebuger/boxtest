@@ -64,7 +64,11 @@ def studentsync1(item):
         boxnumber = item.get("boxNumber")
         if boxnumber is None:
             boxnumber= 1
-        uploadperson(item.get("name"),item.get("imageurl"),boxnumber)
+        code,msg,personid= uploadperson(item.get("name"),item.get("imageurl"),boxnumber)
+        if code == 1:
+            print("update item")
+        else:
+            print("update fail item ")
 def studentsync(item):
         print("sync")
     
@@ -104,9 +108,9 @@ def uploadperson(name,imageUrl,boxnumber):
     if retdict['code'] == 1:
         print("keys=",retdict["data"].keys())
         print("id=",retdict['data']["id"])     
-        return 1,retdict["msg"]
+        return 1,retdict["msg"],retdict['data']["id"]
     else:
-        return 0,retdict["msg"]  
+        return 0,retdict["msg"],-1  
    
 
 def montiorlesson(lesson):
