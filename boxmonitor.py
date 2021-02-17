@@ -6,6 +6,7 @@ import json
 import sys
 import requests
 import arrow
+url="http://192.168.124.43:8088/sendData"
 headers = {
     "Content-Type": "application/json; charset=UTF-8"
     }
