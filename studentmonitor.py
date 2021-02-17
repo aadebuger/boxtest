@@ -123,6 +123,6 @@ os.environ['LEANCLOUD_API_SERVER'] = os.environ.get('LEANCLOUD_API_SERVER',"http
 init_leancloud_client()
 
 scheduler = BackgroundScheduler()
-#startMonitor()
-#time.sleep(50000000) 
-uploadperson("test22","http://192.168.124.48:9000/boxhr/test.jpeg",13)
+startMonitor()
+time.sleep(50000000) 
+#uploadperson("test22","http://192.168.124.48:9000/boxhr/test.jpeg",13)
