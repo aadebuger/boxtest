@@ -5,6 +5,11 @@ import base64
 import time
 from apscheduler.schedulers.background import BackgroundScheduler
 #/Users/aadebuger/Library/Android/sdk/platform-tools
+"""
+{"code":0,"msg":"该箱号已经被占用5"}                                                                                             
+code 0                                                                                                                   
+msg 该箱号已经被占用5 
+"""
 url="http://192.168.124.43:8088/sendData"
 headers = {
     "Content-Type": "application/json; charset=UTF-8"
@@ -117,4 +122,4 @@ init_leancloud_client()
 scheduler = BackgroundScheduler()
 #startMonitor()
 #time.sleep(50000000) 
-uploadperson("test22","http://192.168.124.48:9000/boxhr/test.jpeg",10)
+uploadperson("test22","http://192.168.124.48:9000/boxhr/test.jpeg",11)
