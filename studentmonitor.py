@@ -72,6 +72,7 @@ def studentsync1(item):
             item.set("syncing",0)
             item.set("code",0)
             item.set("msg",msg)
+            item.save()
 def studentsync(item):
         print("sync")
     
