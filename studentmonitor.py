@@ -92,6 +92,8 @@ def uploadperson(name,imageUrl,boxnumber):
     retdict = json.loads(response)
     print("code",retdict['code'])
     print("msg",retdict["msg"])
+    if retdict['code'] == 1:
+        print("id=",retdict['data']["id"])        
    
 
 def montiorlesson(lesson):
@@ -122,4 +124,4 @@ init_leancloud_client()
 scheduler = BackgroundScheduler()
 #startMonitor()
 #time.sleep(50000000) 
-uploadperson("test22","http://192.168.124.48:9000/boxhr/test.jpeg",11)
+uploadperson("test22","http://192.168.124.48:9000/boxhr/test.jpeg",12)
