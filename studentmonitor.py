@@ -84,6 +84,9 @@ def uploadperson(name,imageUrl,boxnumber):
 	}
     response = requests.post(url, data=json.dumps(payload), headers=headers).text
     print(response)
+    retdict = json.loads(response)
+    print("code",retdict['code'])
+    print("msg",retdict["msg"])
    
 
 def montiorlesson(lesson):
