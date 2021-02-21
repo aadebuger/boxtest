@@ -162,7 +162,7 @@ def isLessonworktime(lesson1):
     endtime = lesson1.get('endTime')
     if endtime is None:
         return False
-    ret =isWorktime(array.utcnow(),starttime,endtime)
+    ret =isWorktime(arrow.utcnow(),starttime,endtime)
     return ret
 
 def alert():
