@@ -41,6 +41,34 @@ def androiddevicelist():
         print(value)
         conv.append(item)
     return list(conv)
+def androiddevicelistbystatus():
+    Todo = leancloud.Object.extend('Androiddevice')
+    query = Todo.query
+    query.equal_to('status', "device");
+    query_result = query.find()
+    conv=[]
+    for item in query_result:
+        print(item)
+        value=encode(item,dump_objects=True)
+        print(value)
+        conv.append(item)
+    return list(conv)
+
+def serial2mem(serial,serialdict):
+    if serial in serialdict:
+        return serialdict[serial]
+    else:
+        return None
+def android2member(devicev,serialdict):
+    
+    memberv = map(lambda serial: serial2mem(serial), devicev)
+
+    memberv1 = filter(lambda item: item is not None, memberv)
+    return memberv1
+def noattendmember(memberv,dmemberv):
+    return memberv-dmemeberv
+
+
 def monitorp(serial):
         Todo = leancloud.Object.extend('Androiddevice')
         query = Todo.query
@@ -59,7 +87,43 @@ def montiorlesson(lesson):
 		serialv= checked(lesson)
 		if len(serialv)==0:
 			return 
-		
+def studentlist():
+    Todo = leancloud.Object.extend('Student')
+    query = Todo.query
+    query_result = query.find()
+    conv=[]
+    for item in query_result:
+        print(item)
+        value=encode(item,dump_objects=True)
+        print(value)
+        conv.append(item)
+    return list(conv)
+def equalstudent(student,serial):
+    if student.get("serial") == serial:
+        return True
+    else:
+        return False
+def getStudentbyserial(studentv,serial):
+    overv =filter(lambda student:equalstudent(student,serial),studentv)
+    overlist  = list(overv)
+    if len(overlist) ==0:
+        return None
+    else:
+        return overlist[0]
+    
+def processlesson(newlesson):
+    studentv = studentlist()
+    serialdict = {}
+    for item in studentv:
+        serial = item.get("serial")
+        name = item.get("name")
+        if serial is None:
+            serialdict[serial]=name
+    memberv = newlesson.get("member")
+
+    devicev = androiddevicelistbystatus()
+    joindevicev = android2member(devicev,serialdict)
+
 
 def lessonlist():
     Student = leancloud.Object.extend('Lesson')
