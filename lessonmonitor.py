@@ -18,13 +18,13 @@ def newAndroiddevice(serial):
     TestObject = leancloud.Object.extend('Androiddevice')
     test_object = TestObject()
     test_object.set('serial',serial)
-
+    test_object.set('status',"device")
     test_object.save()
     print(test_object)
 def updateAndroiddevice(androido,serial):
 
     androido.set('serial',serial)
-
+    androido.set('status',status)
     androido.save()
     print(androido)
     
