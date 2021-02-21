@@ -171,8 +171,9 @@ def alert():
         todaylessonv= list(todaylesson)
         print("todaylessoonv",todaylessonv)
         workinglesson = filter(lambda lesson: isLessonworktime(lesson),todaylessonv)
-
-        print(list(workinglesson))
+        for item in list(workinglesson):
+            value=encode(item,dump_objects=True)
+            print(value)
 
 #kangding
 import os
