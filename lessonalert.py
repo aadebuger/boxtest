@@ -119,12 +119,13 @@ def processlesson(newlesson):
         name = item.get("name")
         if serial is None:
             serialdict[serial]=name
+    print("serialdiict",serialdict)
     memberv = newlesson.get("member")
 
     devicev = androiddevicelistbystatus()
     joindevicev = android2member(devicev,serialdict)
-
-
+    print("no join=")
+    print(memberv-joindevicev)
 def lessonlist():
     Student = leancloud.Object.extend('Lesson')
     query = Student.query
