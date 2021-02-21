@@ -120,7 +120,7 @@ def processlesson(newlesson):
         if serial is not None:
             serialdict[serial]=name
     print("serialdiict",serialdict)
-    memberv = newlesson.get("member")
+    memberv = newlesson.get("members")
 
     devicev = androiddevicelistbystatus()
     joindevicev = android2member(devicev,serialdict)
