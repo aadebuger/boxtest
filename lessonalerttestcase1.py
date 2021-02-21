@@ -60,4 +60,4 @@ from leancloud.utils import encode
 arw = arrow.utcnow()
 #newLesson("test20","sudent100",arw.datetime,"12:00","15:00")
 
-newLesson("test21",["sudent100"],arw.datetime,"21:00","22:00")
+newLesson("test21",["student100"],arw.datetime,"22:00","23:00")
