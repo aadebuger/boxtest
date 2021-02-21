@@ -174,6 +174,7 @@ def alert():
         for item in list(workinglesson):
             value=encode(item,dump_objects=True)
             print(value)
+            processlesson(item)
 
 #kangding
 import os
