@@ -169,6 +169,7 @@ def alert():
         student_list= lessonlist()
         todaylesson=filter(lambda lesson:isTodaylesson(lesson),student_list)
         todaylessonv= list(todaylesson)
+        print("todaylessoonv",todaylessonv)
         workinglesson = filter(lambda lesson: isLessonworktime(lesson),todaylessonv)
 
         print(list(workinglesson))
