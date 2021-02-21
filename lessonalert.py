@@ -95,7 +95,7 @@ def studentlist():
     for item in query_result:
         print(item)
         value=encode(item,dump_objects=True)
-        print(value)
+#        print(value)
         conv.append(item)
     return list(conv)
 def equalstudent(student,serial):
