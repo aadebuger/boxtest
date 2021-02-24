@@ -67,6 +67,10 @@ def studentsync1(item):
         code,msg,personid= uploadperson(item.get("name"),item.get("imageurl"),boxnumber)
         if code == 1:
             print("update item")
+            item.set("syncing",0)
+            item.set("code",1)
+            item.set("msg",msg)
+            item.save()            
         else:
             print("update fail item ")
             item.set("syncing",0)
