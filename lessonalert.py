@@ -126,12 +126,25 @@ def processlesson(newlesson):
     joindevicev = android2member(devicev,serialdict)
     print("no join=")
     print(memberv-list(joindevicev))
+    newlesson.set("checked",1)
+    newlesson.save()
+
 def lessonlist():
     Student = leancloud.Object.extend('Lesson')
     query = Student.query
+    query.not_equal_to("checked", 1)
     query.descending('createdAt')
     student_list = query.find()
     return student_list
+
+
+def newAlertlog(name,lesson)
+    test_object = leancloud.Object.extend('Alertlog')
+
+    test_object.set("name",name)
+    test_object.set("lesson",lesson)
+    test_object.set("error","未出席")
+    test_object.save()
 
 import arrow
 def isToday(datadate):
