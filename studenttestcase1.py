@@ -44,4 +44,6 @@ def boxlist():
 
 boxv=boxlist()
 from leancloud.utils import encode
-newStudent("test22","M22","9","http://192.168.124.48:9000/boxhr/test.jpeg")
+#newStudent("test22","M22","9","http://192.168.124.48:9000/boxhr/test.jpeg")
+#lesson alert MTEST
+newStudent("test22","MTEST","9","http://192.168.124.48:9000/boxhr/test.jpeg")
