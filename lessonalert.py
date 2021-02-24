@@ -138,7 +138,7 @@ def lessonlist():
     return student_list
 
 
-def newAlertlog(name,lesson)
+def newAlertlog(name,lesson):
     test_object = leancloud.Object.extend('Alertlog')
 
     test_object.set("name",name)
