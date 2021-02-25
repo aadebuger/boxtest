@@ -74,4 +74,4 @@ arw = arrow.utcnow()
 #newLesson("test21",["student100"],arw.datetime,"22:00","23:00")
 #newLessonuserlevel("test21",arw.datetime,"18:00","19:00",1)
 
-newLessonuserlevel("test23",arw.datetime,"18:00","21:00",1)
+newLessonuserlevel("test24",arw.datetime,"18:00","21:00",1)
