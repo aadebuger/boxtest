@@ -55,7 +55,7 @@ def androiddevicelistbystatus():
     return list(conv)
 
 def serial2mem(serial,serialdict):
-    priint("serial=",serial)
+    print("serial=",serial)
     if serial in serialdict:
         return serialdict[serial]
     else:
