@@ -22,7 +22,7 @@ def newStudent(name,androidid,boxNumber,imageUrl,userLevel):
     TestObject = leancloud.Object.extend("Student")
     test_object = TestObject()
     test_object.set('name',name)
-    test_object.set('android',androidid)
+    test_object.set('androidid',androidid)
     test_object.set('boxNumber',boxNumber)
     test_object.set("imageurl",imageUrl)
     test_object.set("userLevel",userLevel)
