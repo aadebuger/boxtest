@@ -66,7 +66,7 @@ from leancloud.utils import encode
 arw = arrow.utcnow()
 #write phone info
 #write student info 
-newAndroiddevice("MTEST")
+newAndroiddevice("MTEST1")
 
 
 
