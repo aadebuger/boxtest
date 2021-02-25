@@ -61,7 +61,7 @@ def serial2mem(serial,serialdict):
         return None
 def android2member(devicev,serialdict):
     
-    memberv = map(lambda serial: serial2mem(serial), devicev)
+    memberv = map(lambda serial: serial2mem(serial,serialdict), devicev)
 
     memberv1 = filter(lambda item: item is not None, memberv)
     return memberv1
