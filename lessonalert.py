@@ -225,7 +225,7 @@ def alert():
         for item in list(workinglesson):
             value=encode(item,dump_objects=True)
             print(value)
-            processlesson(item)
+            processlessonbyuserLevel(item)
 
 #kangding
 import os
