@@ -17,7 +17,7 @@ def init_leancloud_client():
 
 init_leancloud_client()
 
-def newStudent(name,androidid,boxNumber,imageUrl):
+def newStudent(name,androidid,boxNumber,imageUrl,userLevel):
 
     TestObject = leancloud.Object.extend("Student")
     test_object = TestObject()
@@ -25,6 +25,7 @@ def newStudent(name,androidid,boxNumber,imageUrl):
     test_object.set('android',androidid)
     test_object.set('boxNumber',boxNumber)
     test_object.set("imageurl",imageUrl)
+    test_object.set("userLevel",userLevel)
     test_object.save()
     print(test_object)
 
@@ -46,4 +47,4 @@ boxv=boxlist()
 from leancloud.utils import encode
 #newStudent("test22","M22","9","http://192.168.124.48:9000/boxhr/test.jpeg")
 #lesson alert MTEST
-newStudent("test22","MTEST","9","http://192.168.124.48:9000/boxhr/test.jpeg")
+newStudent("test022501","MTEST","9","http://192.168.124.48:9000/boxhr/test.jpeg",1)
