@@ -98,6 +98,20 @@ def studentlist():
 #        print(value)
         conv.append(item)
     return list(conv)
+def studentlistbyuserlevel(userlevel):
+    Todo = leancloud.Object.extend('Student')
+    query = Todo.query
+    query.equal_to("userLevel",userlevel)
+
+    query_result = query.find()
+    conv=[]
+    for item in query_result:
+        print(item)
+        value=encode(item,dump_objects=True)
+#        print(value)
+        conv.append(item)
+    return list(conv)
+
 def equalstudent(student,serial):
     if student.get("serial") == serial:
         return True
@@ -128,7 +142,30 @@ def processlesson(newlesson):
     print(memberv-list(joindevicev))
     newlesson.set("checked",1)
     newlesson.save()
+def getMembervbyuserlevel(userlevel):
+        studentv = studentlistbyuserlevel(userlevel)
+        memberv = map(lambda item: item.get("userName"),studentv)
+        return list(memberv)
 
+
+def processlessonbyuserLevel(newlesson):
+    studentv = studentlist()
+    serialdict = {}
+    for item in studentv:
+        serial = item.get("androidid")
+        name = item.get("name")
+        if serial is not None:
+            serialdict[serial]=name
+    print("serialdiict",serialdict)
+    userlevel = newlesson.get("userLevel")
+    memberv = getMembervbyuserlevel(userlevel)
+    
+    devicev = androiddevicelistbystatus()
+    joindevicev = android2member(devicev,serialdict)
+    print("no join=")
+    print(memberv-list(joindevicev))
+    newlesson.set("checked",1)
+    newlesson.save()
 def lessonlist():
     Student = leancloud.Object.extend('Lesson')
     query = Student.query
