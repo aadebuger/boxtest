@@ -144,7 +144,7 @@ def processlesson(newlesson):
     newlesson.save()
 def getMembervbyuserlevel(userlevel):
         studentv = studentlistbyuserlevel(userlevel)
-        memberv = map(lambda item: item.get("userName"),studentv)
+        memberv = map(lambda item: item.get("name"),studentv)
         return list(memberv)
 
 
@@ -159,6 +159,7 @@ def processlessonbyuserLevel(newlesson):
     print("serialdiict",serialdict)
     userlevel = newlesson.get("userLevel")
     memberv = getMembervbyuserlevel(userlevel)
+    print("memberv=",memberv)
     
     devicev = androiddevicelistbystatus()
     joindevicev = android2member(devicev,serialdict)
