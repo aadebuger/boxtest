@@ -160,11 +160,12 @@ def processlessonbyuserLevel(newlesson):
     userlevel = newlesson.get("userLevel")
     memberv = getMembervbyuserlevel(userlevel)
     print("memberv=",memberv)
-    
+
     devicev = androiddevicelistbystatus()
-    joindevicev = android2member(devicev,serialdict)
+    joindevicev = list(android2member(devicev,serialdict))
     print("no join=")
-    print(memberv-list(joindevicev))
+    print("joindevicev",joindevicev)
+    print(memberv- joindevicev)
     newlesson.set("checked",1)
     newlesson.save()
 def lessonlist():
