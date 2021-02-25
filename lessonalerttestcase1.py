@@ -55,9 +55,22 @@ def newLesson(name,members,lmdate,startTime,endTime):
     
     test_object.save()
     print(test_object)
+def newLessonuserlevel(name,lmdate,startTime,endTime,userLevel):
 
+    TestObject = leancloud.Object.extend('Lesson')
+    test_object = TestObject()
+    test_object.set('name',name)
+    test_object.set('userLevel',userLevel)
+    test_object.set("lm",lmdate)
+    test_object.set("startTime",startTime)
+    test_object.set("endTime",endTime)
+    
+    test_object.save()
+    print(test_object)
 from leancloud.utils import encode
 arw = arrow.utcnow()
 #newLesson("test20","sudent100",arw.datetime,"12:00","15:00")
 
-newLesson("test21",["student100"],arw.datetime,"22:00","23:00")
+#newLesson("test21",["student100"],arw.datetime,"22:00","23:00")
+newLessonuserlevel("test21",arw.datetime,"18:00","19:00",1)
+
