@@ -37,7 +37,7 @@ try:
     Todo = leancloud.Object.extend('Facebox')
     todo = Todo.create_without_data('582570f38ac247004f39c24b')
     todo.set('task', 6)
-    todo.set('boxNumber',11)
+    todo.set('boxNumber',12)
     todo.set('imageUrl',"http://192.168.124.48:9000/boxhr/test.jpeg")
     todo.set('name',"mytest30")
     todo.save()
