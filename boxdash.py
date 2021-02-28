@@ -19,15 +19,26 @@ def init_leancloud_client():
     leancloud.use_region(LEANCLOUD_REGION)
     print("leancloud init success with app_id: {}, app_key: {}, region: {}".format(LEANCLOUD_APP_ID, LEANCLOUD_APP_KEY,
                                                                                    LEANCLOUD_REGION))
+def studentlist():
+    Todo = leancloud.Object.extend('Student')
+    query = Todo.query
+    query_result = query.find()
+    conv=[]
+    for item in query_result:
+        print(item)
+        value=encode(item,dump_objects=True)
+#        print(value)
+        conv.append(item)
+    return list(conv)
 
 def newBox(boxdata,serialdict):
 
     TestObject = leancloud.Object.extend('Box')
     test_object = TestObject()
     test_object.set('boxNumber',boxdata['boxNumber'])
-    namev= userarray2namearray(json.loads(boxdata['personidArray'],serialdict)
+    namev= userarray2namearray(json.loads(boxdata['personidArray']),serialdict)
 
-    test_object.set('personiidArray',namev)
+    test_object.set('personidArray',namev)
     test_object.set('saved',boxdata['saved'])     
                     
     test_object.set('state',boxdata['state'])
@@ -61,9 +72,9 @@ def updateBox(test_object,boxdata,serialdict):
 
 
     test_object.set('boxNumber',boxdata['boxNumber'])
-    namev= userarray2namearray(json.loads(boxdata['personidArray'],serialdict)
+    namev= userarray2namearray(json.loads(boxdata['personidArray']),serialdict)
 
-    test_object.set('personiidArray',namev)
+    test_object.set('personidArray',namev)
 
     test_object.set('saved',boxdata['saved'])     
                     
@@ -110,7 +121,6 @@ payload={
 def userid2student():
     serialdict={}
     studentv = studentlist()
-    serialdict = {}
     for item in studentv:
         serial = item.get("userid")
         name = item.get("name")
@@ -121,7 +131,7 @@ def userid2student():
     print("serialdiict",serialdict)
 def boxstatus():
     serialdict =userid2student()
-
+    print("serialdict",serialdict)
     payload={
         "serialNumber": "068bebf627d6ab24",
         "devicepass": "123456",
@@ -164,7 +174,7 @@ def personstatus():
 def startMonitor():
 #    scheduler.add_job(event_monitor,'interval', minutes=1) 
     scheduler.add_job(boxstatus,'interval', seconds=20) 
-    scheduler.add_job(personstatus,'interval', seconds=30) 
+#    scheduler.add_job(personstatus,'interval', seconds=30) 
 #    scheduler.add_job(appointmentUpdatetask, 'cron', hour=1, minute=10)
 
     scheduler.daemonic = False 
