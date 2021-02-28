@@ -35,9 +35,9 @@ def boxlist():
 from leancloud.utils import encode
 try:
     Todo = leancloud.Object.extend('Facebox')
-    todo = Todo.create_without_data('582570f38ac247004f39c24b')
+    todo = Todo.create_without_data('60378295a43a26bd5606072d')
     todo.set('task', 6)
-    todo.set('boxNumber',13)
+    todo.set('boxNumber',64)
     todo.set('imageUrl',"http://192.168.124.48:9000/boxhr/test.jpeg")
     todo.set('name',"mytest30")
     todo.save()
