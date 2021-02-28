@@ -20,12 +20,14 @@ def init_leancloud_client():
     print("leancloud init success with app_id: {}, app_key: {}, region: {}".format(LEANCLOUD_APP_ID, LEANCLOUD_APP_KEY,
                                                                                    LEANCLOUD_REGION))
 
-def newBox(boxdata):
+def newBox(boxdata,serialdict):
 
     TestObject = leancloud.Object.extend('Box')
     test_object = TestObject()
     test_object.set('boxNumber',boxdata['boxNumber'])
-    test_object.set('personiidArray',json.loads(boxdata['personidArray']))
+    namev= userarray2namearray(json.loads(boxdata['personidArray'],serialdict)
+
+    test_object.set('personiidArray',namev)
     test_object.set('saved',boxdata['saved'])     
                     
     test_object.set('state',boxdata['state'])
@@ -39,6 +41,30 @@ def updateBox(test_object,boxdata):
 
     test_object.set('boxNumber',boxdata['boxNumber'])
     test_object.set('personiidArray',json.loads(boxdata['personidArray']))
+    test_object.set('saved',boxdata['saved'])     
+                    
+    test_object.set('state',boxdata['state'])
+    test_object.set('type',boxdata['type'])  
+    boxdate =arrow.get(boxdata['time'])
+    boxdate1 = boxdate.to('Asia/Shanghai')
+    test_object.set('boxtime',boxdate1.datetime)                
+    test_object.save()
+    print(test_object)
+
+def userarray2namearray(useridv,serialdict):
+        over=[]
+        for userid in useridv:
+            if userid in serialdict:
+                over.append(serialdict[userid])
+        return over
+def updateBox(test_object,boxdata,serialdict):
+
+
+    test_object.set('boxNumber',boxdata['boxNumber'])
+    namev= userarray2namearray(json.loads(boxdata['personidArray'],serialdict)
+
+    test_object.set('personiidArray',namev)
+
     test_object.set('saved',boxdata['saved'])     
                     
     test_object.set('state',boxdata['state'])
@@ -62,12 +88,12 @@ def boxlist(boxNumber):
         conv.append(item)
     return list(conv)
 
-def boxmonitor(boxNumber,boxdata):
+def boxmonitor(boxNumber,boxdata,serialdict):
      boxv = boxlist(boxNumber)
      if len(boxv)==0:
-        newBox(boxdata)
+        newBox(boxdata,serialdict)
      else:
-        updateBox(boxv[0],boxdata)
+        updateBox(boxv[0],boxdata,serialdict)
 #url="http://192.168.124.43:8882/sendData"
 url="http://192.168.124.43:8088/sendData"
 
@@ -81,7 +107,21 @@ payload={
 	"tasktype": "7",
 	"data": "[0,10,0,0]"
 }
+def userid2student():
+    serialdict={}
+    studentv = studentlist()
+    serialdict = {}
+    for item in studentv:
+        serial = item.get("userid")
+        name = item.get("name")
+        if serial is not None:
+            serialdict[serial]=name
+    return serialdict
+
+    print("serialdiict",serialdict)
 def boxstatus():
+    serialdict =userid2student()
+
     payload={
         "serialNumber": "068bebf627d6ab24",
         "devicepass": "123456",
@@ -100,7 +140,7 @@ def boxstatus():
     for item in r["data"]:
         print(item)
     print("hello")
-    retv= map(lambda item:boxmonitor(item['boxNumber'],item),r['data'])
+    retv= map(lambda item:boxmonitor(item['boxNumber'],item,serialdict),r['data'])
     print(list(retv))
 def personstatus():
     todaydate = arrow.utcnow()
