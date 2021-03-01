@@ -30,6 +30,8 @@ def isToday(datadate):
 def isTodaylesson(lesson1):
     dates = lesson1.get('dates')
     print("dates=",dates)
+    if dates is None:
+        return False
     for lm in dates:
         ret= isToday(arrow.get(lm))
         if ret :
