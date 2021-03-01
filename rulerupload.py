@@ -122,6 +122,7 @@ def init_leancloud_client():
     print("leancloud init success with app_id: {}, app_key: {}, region: {}".format(LEANCLOUD_APP_ID, LEANCLOUD_APP_KEY,
        
 removeAllrule()
+import os 
 os.environ['LEANCLOUD_API_SERVER'] = os.environ.get('LEANCLOUD_API_SERVER',"http://192.168.31.82:7000")
 
 init_leancloud_client()
