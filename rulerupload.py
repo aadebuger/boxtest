@@ -110,6 +110,8 @@ def getIdletime(timev):
         cutlist(timev,newlist)
         newlist.append((endTime1,"23:59"))
         return newlist
+import os
+import arrow
 def init_leancloud_client():
     import os
 
@@ -120,11 +122,11 @@ def init_leancloud_client():
     leancloud.init(app_id=LEANCLOUD_APP_ID, app_key=LEANCLOUD_APP_KEY, master_key=LEANCLOUD_MASTER_KEY)
     leancloud.use_region(LEANCLOUD_REGION)
     print("leancloud init success with app_id: {}, app_key: {}, region: {}".format(LEANCLOUD_APP_ID, LEANCLOUD_APP_KEY,
-       
-removeAllrule()
-import os 
+                                                                                   LEANCLOUD_REGION))
+
+
 os.environ['LEANCLOUD_API_SERVER'] = os.environ.get('LEANCLOUD_API_SERVER',"http://192.168.31.82:7000")
 
 init_leancloud_client()
-
+removeAllrule()
 alert()
