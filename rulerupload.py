@@ -68,7 +68,6 @@ def uploadrule():
 		response = requests.post(url, data=json.dumps(payload), headers=headers).text
 		print(response)
 		#uploadperson()
-alert()
 def cutlist(timev,newlist):
     for i in range(0,len(timev)-1):
             startTime,endTime=timev[i]
