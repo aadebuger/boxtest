@@ -43,7 +43,7 @@ def updateAndroiddevice(androido,serial):
 def studentlist():
     Todo = leancloud.Object.extend('Student')
     query = Todo.query
-    query.equal_to('syncing', '1')
+    query.equal_to('syncing', 1)
     query_result = query.find()
     conv=[]
     for item in query_result:
@@ -70,6 +70,8 @@ def studentsync1(item):
             item.set("syncing",0)
             item.set("code",1)
             item.set("msg",msg)
+            item.set('userid'.personid)
+
             item.save()            
         else:
             print("update fail item ")

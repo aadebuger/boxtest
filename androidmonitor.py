@@ -37,6 +37,7 @@ def updateAndroiddevice(androido,serial,name,model,device):
 def androiddevicelist():
     Todo = leancloud.Object.extend('Androiddevicenew')
     query = Todo.query
+    
     query_result = query.find()
     conv=[]
     for item in query_result:

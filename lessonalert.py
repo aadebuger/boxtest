@@ -125,6 +125,8 @@ def getStudentbyserial(studentv,serial):
         return None
     else:
         return overlist[0]
+
+def writeAlertlog(item):
     
 def processlesson(newlesson):
     studentv = studentlist()
@@ -141,6 +143,9 @@ def processlesson(newlesson):
     joindevicev = android2member(devicev,serialdict)
     print("no join=")
     print(memberv-list(joindevicev))
+    nojoin = memberv-list(joindevicev)
+    map(lambda item:writeAlertlog(item),nojoin)
+
     newlesson.set("checked",1)
     newlesson.save()
 def getMembervbyuserlevel(userlevel):
