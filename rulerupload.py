@@ -3,6 +3,7 @@ import json
 import arrow
 import base64
 import leancloud
+from leancloud.utils import encode
 #url="http://192.168.124.43:8882/sendData"
 url="http://192.168.124.43:8088/sendData"
 
@@ -43,6 +44,9 @@ def alert():
         todaylesson=filter(lambda lesson:isTodaylesson(lesson),student_list)
         todaylessonv= list(todaylesson)
         print("todaylessoonv",todaylessonv)
+        for item in todaylessonv:
+            value=encode(item,dump_objects=True)
+            print(value)
 
         timev=map(lambda lesson:(lesson.get("startTime"),lesson.get("endTime")),todaylessonv)
         timelist = list(timev)
