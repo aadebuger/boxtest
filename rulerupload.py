@@ -44,7 +44,7 @@ def alert():
         todaylessonv= list(todaylesson)
         print("todaylessoonv",todaylessonv)
 
-        timev=map(lambda lesson:(lesson.get("stateTime"),lesson.get("endTime"),todyalessonv))
+        timev=map(lambda lesson:(lesson.get("startTime"),lesson.get("endTime")),todaylessonv)
         timelist = list(timev)
         timelist.sort(key= lambda k:k[0])
         idletime =getIdletime(timelist)
