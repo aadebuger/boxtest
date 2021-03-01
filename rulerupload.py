@@ -28,10 +28,10 @@ def isToday(datadate):
     else:
         return False
 def isTodaylesson(lesson1):
-    dates = arrow.get(lesson1.get('dates'))
+    dates = lesson1.get('dates')
     print("dates=",dates)
     for lm in dates:
-        ret= isToday(lm)
+        ret= isToday(arrow.get(lm))
         if ret :
             return True
     return False
