@@ -53,6 +53,9 @@ def alert():
         timelist.sort(key= lambda k:k[0])
         idletime =getIdletime(timelist)
         print("idletime",idletime)
+        for timeseg in idletime:
+            startTime,endTime = timeseg
+            uploadrule(startTime,endTime)
 
 def removeAllrule():
 	payload={
@@ -76,7 +79,7 @@ def queryrulebyid(id):
 	response = requests.post(url, data=json.dumps(payload), headers=headers).text
 	print(response)
 
-def uploadrule():
+def uploadrule(startTime,endTime):
 		payload={
 			"serialNumber": "068bebf627d6ab24",
 			"devicepass": "123456",
@@ -84,9 +87,9 @@ def uploadrule():
 			"data": {
 				"name": "早上1",
 				"type": 0,
-				"week": "[true,false,true,true,true,true,true]",
-				"startTime": "00:00",
-				"endTime": "23:59"
+				"week": "[true,true,true,true,true,true,true]",
+				"startTime": startTime,
+				"endTime": endTime
 			}
 		}
 
