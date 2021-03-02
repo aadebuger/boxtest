@@ -42,7 +42,7 @@ def studentlist():
     return list(conv)
 def newEvent():
 
-    TestObject = leancloud.Object.extend("Event")
+    TestObject = leancloud.Object.extend("event")
     test_object = TestObject()
     test_object.set('action',"ruleupload")
     test_object.save()
