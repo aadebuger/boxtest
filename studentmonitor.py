@@ -70,7 +70,7 @@ def studentsync1(item):
             item.set("syncing",0)
             item.set("code",1)
             item.set("msg",msg)
-            item.set('userid'.personid)
+            item.set('userid',personid)
 
             item.save()            
         else:
