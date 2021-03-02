@@ -48,7 +48,7 @@ def alert():
             value=encode(item,dump_objects=True)
             print(value)
 
-        timev=map(lambda lesson:(arrow.get(lesson.get("startTime")).format("HH:mm"),arrow.get(lesson.get("endTime")).format("HH:mm")),todaylessonv)
+        timev=map(lambda lesson:(lesson.get("startTime"),lesson.get("endTime")),todaylessonv)
         timelist = list(timev)
         timelist.sort(key= lambda k:k[0])
         idletime =getIdletime(timelist)
@@ -140,3 +140,6 @@ def uploadboxrule():
     init_leancloud_client()
     removeAllrule()
     alert()
+if __name__ == "__main__":
+    # execute only if run as a script
+    uploadboxrule()
