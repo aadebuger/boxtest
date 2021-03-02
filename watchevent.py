@@ -17,7 +17,7 @@ client1 = MongoClient(getMydbip())
 def getMclient():
          return client1
 client = pymongo.MongoClient(getMydbip())
-change_stream = client.test_database.Event.watch()
+change_stream = client.test_database.event.watch()
 for change in change_stream:
     print(dumps(change))
     print('') # for readability only
