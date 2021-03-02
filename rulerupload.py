@@ -136,6 +136,7 @@ def init_leancloud_client():
 
 os.environ['LEANCLOUD_API_SERVER'] = os.environ.get('LEANCLOUD_API_SERVER',"http://192.168.31.82:7000")
 
-init_leancloud_client()
-removeAllrule()
-alert()
+def uploadboxrule():
+    init_leancloud_client()
+    removeAllrule()
+    alert()
