@@ -9,6 +9,8 @@ import os
 from pymongo import collection
 from bson import json_util
 from bson.objectid import ObjectId
+import rulerupload
+
 def getMydbip():
 
     return "mongodb://root:root13906917736@{0}:27017/".format(os.environ.get('MYDB_PORT_27017_TCP_ADDR',"127.0.0.1"))
@@ -30,4 +32,6 @@ for change in change_stream:
     action = change['fullDocument']["action"]
     print("action=",action)
     print("change ovoer\n")
+    if action =='ruleupload':
+        rulerupload.uploadboxrule()
 #test_database
