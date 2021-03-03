@@ -101,7 +101,7 @@ def updateBox(test_object,boxdata,serialmoodeldict ):
                   test_object.set('model',serialmoodeldict[serial])  
             else:
                    test_object.set('model',"")  
-                   
+
     test_object.set('saved',boxdata['saved'])     
                     
     test_object.set('state',boxdata['state'])
@@ -181,7 +181,7 @@ def userid2student():
     print("serialdiict",serialdict)
 def boxstatus():
     serialdict =userid2student()
-    serialmoodeldict = seriial2model()
+    serialmoodeldict = serial2model()
 
     print("serialdict",serialdict)
     payload={
