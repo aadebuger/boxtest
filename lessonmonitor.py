@@ -14,17 +14,19 @@ def init_leancloud_client():
     print("leancloud init success with app_id: {}, app_key: {}, region: {}".format(LEANCLOUD_APP_ID, LEANCLOUD_APP_KEY,
                                                                                    LEANCLOUD_REGION))
 
-def newAndroiddevice(serial):
+def newAndroiddevice(serial,status,model):
     TestObject = leancloud.Object.extend('Androiddevice')
     test_object = TestObject()
     test_object.set('serial',serial)
     test_object.set('status',"device")
+    test_object.set("model",model)
     test_object.save()
     print(test_object)
-def updateAndroiddevice(androido,serial):
+def updateAndroiddevice(androido,serial,status,model):
 
     androido.set('serial',serial)
     androido.set('status',status)
+    androido.set('model',model)
     androido.save()
     print(androido)
     
@@ -39,7 +41,7 @@ def androiddevicelist():
         print(value)
         conv.append(item)
     return list(conv)
-def monitorp(serial):
+def monitorp(serial,status,model):
         Todo = leancloud.Object.extend('Androiddevice')
         query = Todo.query
         query.equal_to('serial', serial);
@@ -49,9 +51,23 @@ def monitorp(serial):
         except Exception as e:
             print("except ",e)
         if adevice is None:
-            newAndroiddevice(serial)
+            newAndroiddevice(serial,status,model)
         else:
-            updateAndroiddevice(adevice,serial)
+            updateAndroiddevice(adevice,serial,status,model)
+
+def monitorpnodevice(serial,status,model):
+        Todo = leancloud.Object.extend('Androiddevice')
+        query = Todo.query
+        query.equal_to('serial', serial);
+        adevice = None
+        try:
+            adevice = query.first()
+        except Exception as e:
+            print("except ",e)
+        if adevice is None:
+            pass
+        else:
+            updateAndroiddevice(adevice,serial,status,model)
 
 def montiorlesson(lesson):
 		serialv= checked(lesson)
@@ -87,4 +103,6 @@ for item in devices:
 		print("model=",d.prop.model)
 		print("device=",d.prop.device)
 		print("moddel=",d.prop.get("ro.product.model"))
-		monitorp(item.serial)
+		monitorp(item.serial,item.status,d.prop.model)
+	else:
+		monitorpnodevice(item.serial,item.status,"")
