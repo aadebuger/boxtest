@@ -66,6 +66,7 @@ def newBox(boxdata,serialdict,serialmoodeldict ):
             test_object.set("mode","")
     else:
         personid = personidv[0]
+        test_object.set("userid",personid)
         if personid in serialdict:
             name,serial= serialdict[personid]
 
@@ -93,6 +94,7 @@ def updateBox(test_object,boxdata,serialdict,serialmoodeldict ):
             test_object.set("mode","")
     else:
         personid = personidv[0]
+        test_object.set("userid",personid)
         if personid in serialdict:
             name,serial= serialdict[personid]
 
