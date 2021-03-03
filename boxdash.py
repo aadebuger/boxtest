@@ -61,7 +61,7 @@ def newBox(boxdata,serialdict,serialmoodeldict ):
     test_object.set('boxNumber',boxdata['boxNumber'])
 #    namev= userarray2namearray(json.loads(boxdata['personidArray']),serialdict)
     personidv =json.loads(boxdata['personidArray'])
-    if personidv.length==0:
+    if len(personidv)==0:
             test_object.set('personidArray',"") 
             test_object.set("mode","")
     else:
@@ -88,7 +88,7 @@ def updateBox(test_object,boxdata,serialdict,serialmoodeldict ):
 
     test_object.set('boxNumber',boxdata['boxNumber'])
     personidv =json.loads(boxdata['personidArray'])
-    if personidv.length==0:
+    if len(personidv)==0:
             test_object.set('personidArray',"") 
             test_object.set("mode","")
     else:
