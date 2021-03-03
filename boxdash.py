@@ -30,15 +30,34 @@ def studentlist():
 #        print(value)
         conv.append(item)
     return list(conv)
+def androiddevicelistbystatus():
+    Todo = leancloud.Object.extend('Androiddevice')
+    query = Todo.query
+    query.equal_to('status', "device");
+    query_result = query.find()
+    conv=[]
+    for item in query_result:
+        print(item)
+        value=encode(item,dump_objects=True)
+        print(value)
+        conv.append(item)
+    return list(conv)
 
 def newBox(boxdata,serialdict):
 
     TestObject = leancloud.Object.extend('Box')
     test_object = TestObject()
     test_object.set('boxNumber',boxdata['boxNumber'])
-    namev= userarray2namearray(json.loads(boxdata['personidArray']),serialdict)
+#    namev= userarray2namearray(json.loads(boxdata['personidArray']),serialdict)
+    personidv =json.loads(boxdata['personidArray'])
+    if personidv.length==0:
+            test_object.set('personidArray',"") 
+    else:
+        personid = personidv[0]
+        if personid in serialdict:
+            test_object.set('personidArray',serialdict[personid])
+            
 
-    test_object.set('personidArray',namev)
     test_object.set('saved',boxdata['saved'])     
                     
     test_object.set('state',boxdata['state'])
@@ -125,7 +144,7 @@ def userid2student():
         serial = item.get("userid")
         name = item.get("name")
         if serial is not None:
-            serialdict[serial]=name
+            serialdict[serial]=name,item.get("serial")
     return serialdict
 
     print("serialdiict",serialdict)
