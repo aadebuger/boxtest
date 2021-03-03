@@ -30,6 +30,17 @@ def studentlist():
 #        print(value)
         conv.append(item)
     return list(conv)
+def serail2model():
+    serialdict={}
+    studentv = androiddevicelistbystatus()
+    for item in studentv:
+        serial = item.get("seriial")
+        moodel = item.get("model")
+        if serial is not None:
+            serialdict[serial]=model
+    print("serialmodeldict",serialdict)
+    return serialdict
+
 def androiddevicelistbystatus():
     Todo = leancloud.Object.extend('Androiddevice')
     query = Todo.query
@@ -56,7 +67,7 @@ def newBox(boxdata,serialdict):
         personid = personidv[0]
         if personid in serialdict:
             test_object.set('personidArray',serialdict[personid])
-            
+
 
     test_object.set('saved',boxdata['saved'])     
                     
@@ -150,6 +161,8 @@ def userid2student():
     print("serialdiict",serialdict)
 def boxstatus():
     serialdict =userid2student()
+    serialmoodeldict = serail2model()
+
     print("serialdict",serialdict)
     payload={
         "serialNumber": "068bebf627d6ab24",
