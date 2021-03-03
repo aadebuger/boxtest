@@ -34,8 +34,8 @@ def serial2model():
     serialdict={}
     studentv = androiddevicelistbystatus()
     for item in studentv:
-        serial = item.get("seriial")
-        moodel = item.get("model")
+        serial = item.get("serial")
+        model = item.get("model")
         if serial is not None:
             serialdict[serial]=model
     print("serialmodeldict",serialdict)
