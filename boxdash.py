@@ -84,10 +84,10 @@ def newBox(boxdata,serialdict,serialmoodeldict ):
     test_object.set('boxtime',boxdate1.datetime)                
     test_object.save()
     print(test_object)
-def updateBox(test_object,boxdata,serialmoodeldict ):
+def updateBox(test_object,boxdata,serialdict,serialmoodeldict ):
 
     test_object.set('boxNumber',boxdata['boxNumber'])
-
+    ersonidv =json.loads(boxdata['personidArray'])
     if personidv.length==0:
             test_object.set('personidArray',"") 
             test_object.set("mode","")
