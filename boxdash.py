@@ -175,7 +175,7 @@ def userid2student():
         serial = item.get("userid")
         name = item.get("name")
         if serial is not None:
-            serialdict[serial]=name,item.get("serial")
+            serialdict[serial]=name,item.get("androidid")
     return serialdict
 
     print("serialdiict",serialdict)
