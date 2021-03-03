@@ -127,7 +127,7 @@ def getStudentbyserial(studentv,serial):
         return overlist[0]
 
 def writeAlertlog(item):
-    
+    pass
 def processlesson(newlesson):
     studentv = studentlist()
     serialdict = {}
