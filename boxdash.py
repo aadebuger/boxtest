@@ -118,7 +118,7 @@ def userarray2namearray(useridv,serialdict):
             if userid in serialdict:
                 over.append(serialdict[userid])
         return over
-def updateBox(test_object,boxdata,serialdict):
+def updateBox1(test_object,boxdata,serialdict):
 
 
     test_object.set('boxNumber',boxdata['boxNumber'])
