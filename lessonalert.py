@@ -145,8 +145,9 @@ def processlesson(newlesson):
     print(memberv-list(joindevicev))
     nojoin = memberv-list(joindevicev)
     map(lambda item:writeAlertlog(item),nojoin)
-
-    newlesson.set("checked",1)
+    today=today1.to('Asia/Shanghai')
+    todaystr=today.format("YYYYMMDD")
+    newlesson.set(todaystr+"checked",1)
     newlesson.save()
 def getMembervbyuserlevel(userlevel):
         studentv = studentlistbyuserlevel(userlevel)
@@ -172,12 +173,18 @@ def processlessonbyuserLevel(newlesson):
     print("no join=")
     print("joindevicev",joindevicev)
     print(set(memberv)- set(joindevicev))
+    nojoin = set(memberv)- set(joindevicev)
+    for student in nojoin:
+        newAlertlog(student,newlesson.get("name"))
     newlesson.set("checked",1)
     newlesson.save()
 def lessonlist():
     Student = leancloud.Object.extend('Lesson')
     query = Student.query
-    query.not_equal_to("checked", 1)
+    today1 = arrow.utcnow()
+    today=today1.to('Asia/Shanghai')
+    todaystr=today.format("YYYYMMDD")
+    query.not_equal_to(todaystr+"checked", 1)
     query.descending('createdAt')
     student_list = query.find()
     return student_list
@@ -209,11 +216,22 @@ def isWorktime(todaydate,starttime,endtime):
     if nowstr > endtime:
         return False
     return True
-def isTodaylesson(lesson1):
+def isTodaylessonlm(lesson1):
     lm = arrow.get(lesson1.get('lm'))
     print("lm=",lm)
     ret= isToday(lm)
     return ret
+def isTodaylesson(lesson1):
+    dates = lesson1.get('dates')
+    print("dates=",dates)
+    if dates is None:
+        return False
+    for lm in dates:
+        ret= isToday(arrow.get(lm))
+        if ret :
+            return True
+    return False
+
 def isLessonworktime(lesson1):
     starttime= lesson1.get('startTime')
     if starttime is None:
