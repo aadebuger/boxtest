@@ -96,7 +96,7 @@ for item in devices:
 	print(item.serial)
 	if item.status=='device' or item.status=='absent':
 		print("device")
-        print("item status",item.status)
+		print("item status",item.status)
 		d = adb.device(serial=item.serial)
 		serial = d.shell(["getprop", "ro.serial"])
 		print("serial",serial)
