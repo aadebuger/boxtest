@@ -30,7 +30,7 @@ def studentlist():
 #        print(value)
         conv.append(item)
     return list(conv)
-def serail2model():
+def serial2model():
     serialdict={}
     studentv = androiddevicelistbystatus()
     for item in studentv:
@@ -54,7 +54,7 @@ def androiddevicelistbystatus():
         conv.append(item)
     return list(conv)
 
-def newBox(boxdata,serialdict):
+def newBox(boxdata,serialdict,serialmoodeldict ):
 
     TestObject = leancloud.Object.extend('Box')
     test_object = TestObject()
@@ -63,11 +63,17 @@ def newBox(boxdata,serialdict):
     personidv =json.loads(boxdata['personidArray'])
     if personidv.length==0:
             test_object.set('personidArray',"") 
+            test_object.set("mode","")
     else:
         personid = personidv[0]
         if personid in serialdict:
-            test_object.set('personidArray',serialdict[personid])
+            name,serial= serialdict[personid]
 
+            test_object.set('personidArray',name)
+            if serial in serialmoodeldict:
+                  test_object.set('model',serialmoodeldict[serial])  
+            else:
+                   test_object.set('model',"")  
 
     test_object.set('saved',boxdata['saved'])     
                     
@@ -78,10 +84,24 @@ def newBox(boxdata,serialdict):
     test_object.set('boxtime',boxdate1.datetime)                
     test_object.save()
     print(test_object)
-def updateBox(test_object,boxdata):
+def updateBox(test_object,boxdata,serialmoodeldict ):
 
     test_object.set('boxNumber',boxdata['boxNumber'])
-    test_object.set('personiidArray',json.loads(boxdata['personidArray']))
+
+    if personidv.length==0:
+            test_object.set('personidArray',"") 
+            test_object.set("mode","")
+    else:
+        personid = personidv[0]
+        if personid in serialdict:
+            name,serial= serialdict[personid]
+
+            test_object.set('personidArray',name)
+            if serial in serialmoodeldict:
+                  test_object.set('model',serialmoodeldict[serial])  
+            else:
+                   test_object.set('model',"")  
+                   
     test_object.set('saved',boxdata['saved'])     
                     
     test_object.set('state',boxdata['state'])
@@ -129,12 +149,12 @@ def boxlist(boxNumber):
         conv.append(item)
     return list(conv)
 
-def boxmonitor(boxNumber,boxdata,serialdict):
+def boxmonitor(boxNumber,boxdata,serialdict,serialmoodeldict ):
      boxv = boxlist(boxNumber)
      if len(boxv)==0:
-        newBox(boxdata,serialdict)
+        newBox(boxdata,serialdict,serialmoodeldict )
      else:
-        updateBox(boxv[0],boxdata,serialdict)
+        updateBox(boxv[0],boxdata,serialdict,serialmoodeldict )
 #url="http://192.168.124.43:8882/sendData"
 url="http://192.168.124.43:8088/sendData"
 
@@ -161,7 +181,7 @@ def userid2student():
     print("serialdiict",serialdict)
 def boxstatus():
     serialdict =userid2student()
-    serialmoodeldict = serail2model()
+    serialmoodeldict = seriial2model()
 
     print("serialdict",serialdict)
     payload={
@@ -182,7 +202,7 @@ def boxstatus():
     for item in r["data"]:
         print(item)
     print("hello")
-    retv= map(lambda item:boxmonitor(item['boxNumber'],item,serialdict),r['data'])
+    retv= map(lambda item:boxmonitor(item['boxNumber'],item,serialdict,serialmoodeldict ),r['data'])
     print(list(retv))
 def personstatus():
     todaydate = arrow.utcnow()
