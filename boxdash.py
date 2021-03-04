@@ -91,7 +91,8 @@ def updateBox(test_object,boxdata,serialdict,serialmoodeldict ):
     personidv =json.loads(boxdata['personidArray'])
     if len(personidv)==0:
             test_object.set('personidArray',"") 
-            test_object.set("mode","")
+            test_object.set("model","")
+            
     else:
         personid = personidv[0]
         test_object.set("userid",personid)
