@@ -14,26 +14,31 @@ def init_leancloud_client():
     print("leancloud init success with app_id: {}, app_key: {}, region: {}".format(LEANCLOUD_APP_ID, LEANCLOUD_APP_KEY,
                                                                                    LEANCLOUD_REGION))
 
-def newAndroiddevice(serial,name,model,device):
+def newAndroiddevice(serial,name,model,device,status):
     TestObject = leancloud.Object.extend('Androiddevicenew')
     test_object = TestObject()
     test_object.set('serial',serial)
     test_object.set('name',name)
     test_object.set('model',model)
     test_object.set('device',device)
-
+    test_object.set('status',status)
     test_object.save()
     print(test_object)
-def updateAndroiddevice(androido,serial,name,model,device):
+def updateAndroiddevice(androido,serial,name,model,device,status):
 
     androido.set('serial',serial)
     androido.set('name',name)
     androido.set('model',model)
     androido.set('device',device)
-    
+    androido.set('status',status)    
     androido.save()
     print(androido)
-    
+def updateAndroiddevicestatus(androido,status):
+
+    androido.set('status',status)    
+    androido.save()
+    print(androido)
+       
 def androiddevicelist():
     Todo = leancloud.Object.extend('Androiddevicenew')
     query = Todo.query
@@ -46,13 +51,20 @@ def androiddevicelist():
         print(value)
         conv.append(item)
     return list(conv)
-def monitorp(serial,name,model,device):
+def monitorp(serial,name,model,device,status):
 		devicesvv= androiddevicelist()
 		devicesv= list(devicesvv)
 		if len(devicesv)==0:
-			newAndroiddevice(serial,name,model,device)
+			newAndroiddevice(serial,name,model,device,status)
 		else:
-			updateAndroiddevice(devicesv[0],serial,name,model,device)
+			updateAndroiddevice(devicesv[0],serial,name,model,device,status)
+def monitorpstatus(serial,status):
+		devicesvv= androiddevicelist()
+		devicesv= list(devicesvv)
+		if len(devicesv)==0:
+			pass
+		else:
+			updateAndroiddevicestatus(devicesv[0],status)
 
 
 #kangding
@@ -82,3 +94,5 @@ for item in devices:
 		print(d.prop.device)
 		print(d.prop.get("ro.product.model"))
 		monitorp(item.serial,d.prop.name,d.prop.model,d.prop.device)
+	else:
+		monitopstatus(item.serial,item.status)
