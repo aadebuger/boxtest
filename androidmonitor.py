@@ -84,15 +84,18 @@ devices=adb.track_devices()
 for item in devices:
 	print(item)
 	print(item.serial)
-	if item.status=='device':
-		print("device")
-		d = adb.device(serial=item.serial)
-		serial = d.shell(["getprop", "ro.serial"])
-		print("serial",serial)
-		print(d.prop.name)
-		print(d.prop.model)
-		print(d.prop.device)
-		print(d.prop.get("ro.product.model"))
-		monitorp(item.serial,d.prop.name,d.prop.model,d.prop.device)
-	else:
-		monitopstatus(item.serial,item.status)
+	try:
+	    if item.status=='device':
+	        print("device")
+	        d = adb.device(serial=item.serial)
+	        serial = d.shell(["getprop", "ro.serial"])
+	        print("serial",serial)
+	        print(d.prop.name)
+	        print(d.prop.model)
+	        print(d.prop.device)
+	        print(d.prop.get("ro.product.model"))
+	        monitorp(item.serial,d.prop.name,d.prop.model,d.prop.device,'device')
+	    else:
+	        monitorpstatus(item.serial,item.status)
+	except Exception as e:
+	    print(e)
