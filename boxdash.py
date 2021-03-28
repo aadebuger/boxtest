@@ -87,7 +87,7 @@ def newBox(boxdata,serialdict,serialmoodeldict ):
     test_object.set('boxtime',boxdate1.datetime)                
     test_object.save()
     print(test_object)
-#mymy
+#mymymy
 def updateBox(test_object,boxdata,serialdict,serialmoodeldict ):
 
     test_object.set('boxNumber',boxdata['boxNumber'])
