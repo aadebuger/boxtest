@@ -53,7 +53,7 @@ def androiddevicelistbystatus():
         print(value)
         conv.append(item)
     return list(conv)
-
+#my1
 def newBox(boxdata,serialdict,serialmoodeldict ):
 
     TestObject = leancloud.Object.extend('Box')
