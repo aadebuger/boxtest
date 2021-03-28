@@ -60,7 +60,9 @@ def newBox(boxdata,serialdict,serialmoodeldict ):
     test_object = TestObject()
     test_object.set('boxNumber',boxdata['boxNumber'])
 #    namev= userarray2namearray(json.loads(boxdata['personidArray']),serialdict)
-    personidv =json.loads(boxdata['personidArray'])
+    personidv =[]
+    if "personidArray" in  boxdata:
+        personidv =json.loads(boxdata['personidArray'])
     if len(personidv)==0:
             test_object.set('personidArray',"") 
             test_object.set("model","")
