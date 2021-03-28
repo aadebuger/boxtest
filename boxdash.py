@@ -90,7 +90,9 @@ def newBox(boxdata,serialdict,serialmoodeldict ):
 def updateBox(test_object,boxdata,serialdict,serialmoodeldict ):
 
     test_object.set('boxNumber',boxdata['boxNumber'])
-    personidv =json.loads(boxdata['personidArray'])
+    personidv =[]
+    if "personidArray" in  boxdata:
+        personidv =json.loads(boxdata['personidArray'])
     if len(personidv)==0:
             test_object.set('personidArray',"") 
             test_object.set("model","")
