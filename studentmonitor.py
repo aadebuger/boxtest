@@ -3,6 +3,8 @@ from leancloud.utils import encode
 import requests
 import base64
 import time
+import os
+
 from apscheduler.schedulers.background import BackgroundScheduler
 #/Users/aadebuger/Library/Android/sdk/platform-tools
 """
@@ -105,7 +107,7 @@ def uploadperson(name,imageUrl,boxnumber):
     data['base64'] = base64_data.decode("utf8")
 
     payload={
-		"serialNumber": "068bebf627d6ab24",
+		"serialNumber": os.environ.get("BOX_ID","068bebf627d6ab24"),
 		"devicepass": "123456",
 		"tasktype": "6",
 		"data": json.dumps(data)

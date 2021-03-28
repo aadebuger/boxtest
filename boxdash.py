@@ -166,7 +166,7 @@ headers = {
     "Content-Type": "application/json; charset=UTF-8"
     }
 payload={
-	"serialNumber": "068bebf627d6ab24",
+	"serialNumber": os.environ.get("BOX_ID","068bebf627d6ab24"),
 	"devicepass": "123456",
 	"tasktype": "7",
 	"data": "[0,10,0,0]"
