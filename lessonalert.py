@@ -170,10 +170,11 @@ def processlessonbyuserLevel(newlesson):
 
     devicev = androiddevicelistbystatus()
     joindevicev = list(android2member(devicev,serialdict))
-    print("no join=")
+    
     print("joindevicev",joindevicev)
     print(set(memberv)- set(joindevicev))
     nojoin = set(memberv)- set(joindevicev)
+    print("no join=",nojoin)
     for student in nojoin:
         newAlertlog(student,newlesson.get("name"))
     newlesson.set("checked",1)
@@ -191,8 +192,10 @@ def lessonlist():
 
 
 def newAlertlog(name,lesson):
-    test_object = leancloud.Object.extend('Alertlog')
-
+    print("name=",name)
+    print("lesson=",lesson)
+    TestObject = leancloud.Object.extend('Alert')
+    test_object = TestObject()
     test_object.set("name",name)
     test_object.set("lesson",lesson)
     test_object.set("error","未出席")
