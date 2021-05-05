@@ -201,7 +201,7 @@ def newAlertlog(name,lesson):
     test_object = TestObject()
     test_object.set("name",name)
     test_object.set("lesson",lesson)
-    test_object.set("error","未出席")
+    test_object.set("error","未识别手机")
     test_object.save()
 
 import arrow
