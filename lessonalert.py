@@ -177,7 +177,10 @@ def processlessonbyuserLevel(newlesson):
     print("no join=",nojoin)
     for student in nojoin:
         newAlertlog(student,newlesson.get("name"))
-    newlesson.set("checked",1)
+    today1 = arrow.utcnow()
+    today=today1.to('Asia/Shanghai')
+    todaystr=today.format("YYYYMMDD")
+    newlesson.set(todaystr+"checked",1)
     newlesson.save()
 def lessonlist():
     Student = leancloud.Object.extend('Lesson')
