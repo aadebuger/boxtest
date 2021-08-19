@@ -102,7 +102,7 @@ def openbox(i):
     url="http://192.168.124.43:8088/sendData"
     boxv=[i]
     payload={
-        "serialNumber": os.environ.get("BOX_ID","068bebf627d6ab24"),
+        "serialNumber": os.environ.get("BOX_ID","27043b125bbab5a1"),
         "devicepass": "123456",
         "tasktype": "24",
         "data": json.dumps(boxv)

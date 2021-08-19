@@ -107,7 +107,7 @@ def uploadperson(name,imageUrl,boxnumber):
     data['base64'] = base64_data.decode("utf8")
 
     payload={
-		"serialNumber": os.environ.get("BOX_ID","068bebf627d6ab24"),
+		"serialNumber": os.environ.get("BOX_ID","27043b125bbab5a1"),
 		"devicepass": "123456",
 		"tasktype": "6",
 		"data": json.dumps(data)

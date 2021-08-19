@@ -171,7 +171,7 @@ headers = {
     "Content-Type": "application/json; charset=UTF-8"
     }
 payload={
-	"serialNumber": os.environ.get("BOX_ID","068bebf627d6ab24"),
+	"serialNumber": os.environ.get("BOX_ID","27043b125bbab5a1"),
 	"devicepass": "123456",
 	"tasktype": "7",
 	"data": "[0,10,0,0]"
@@ -193,7 +193,7 @@ def boxstatus():
 
     print("serialdict",serialdict)
     payload={
-        "serialNumber": "068bebf627d6ab24",
+        "serialNumber": "27043b125bbab5a1",
         "devicepass": "123456",
         "tasktype": "23",
         "data": ""
@@ -219,7 +219,7 @@ def personstatus():
 
     datav=[0,200,yest.timestamp*1000,todaydate.timestamp*1000]
     payload={
-        "serialNumber": "068bebf627d6ab24",
+        "serialNumber": "27043b125bbab5a1",
         "devicepass": "123456",
         "tasktype": "7",
         "data": json.dumps(datav)
