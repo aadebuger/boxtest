@@ -108,7 +108,7 @@ def uploadperson(name,imageUrl,boxnumber):
 
     payload={
 		"serialNumber": os.environ.get("BOX_ID","27043b125bbab5a1"),
-		"devicepass": "123456",
+		"devicepass": os.environ.get("devicepass","123456"),
 		"tasktype": "6",
 		"data": json.dumps(data)
 	}
