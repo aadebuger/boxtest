@@ -59,7 +59,7 @@ def alert():
 
 def removeAllrule():
 	payload={
-		"serialNumber": os.environ.get("serialNumber","27043b125bbab5a1"),
+		"serialNumber": os.environ.get("BOX_ID","27043b125bbab5a1"),
 		"devicepass": os.environ.get("devicepass","123456"),
 		"tasktype": "40",
 		"data": ""
@@ -70,7 +70,7 @@ def removeAllrule():
 
 def queryrulebyid(id):
 	payload={
-		"serialNumber": os.environ.get("serialNumber","27043b125bbab5a1"),
+		"serialNumber": os.environ.get("BOX_ID","27043b125bbab5a1"),
 		"devicepass": os.environ.get("devicepass","123456"),
 		"tasktype": "38",
 		"data": json.dumps(id)
@@ -81,7 +81,7 @@ def queryrulebyid(id):
 
 def uploadrule(startTime,endTime):
 		payload={
-			"serialNumber": os.environ.get("serialNumber","27043b125bbab5a1"),
+			"serialNumber": os.environ.get("BOX_ID","27043b125bbab5a1"),
 			"devicepass": os.environ.get("devicepass","123456"),
 			"tasktype": "37",
 			"data": {

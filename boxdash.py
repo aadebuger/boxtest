@@ -193,7 +193,7 @@ def boxstatus():
 
     print("serialdict",serialdict)
     payload={
-        "serialNumber": os.environ.get("serialNumber","27043b125bbab5a1"),
+        "serialNumber": os.environ.get("BOX_ID","27043b125bbab5a1"),
         "devicepass": os.environ.get("devicepass","123456"),
         "tasktype": "23",
         "data": ""
@@ -219,7 +219,7 @@ def personstatus():
 
     datav=[0,200,yest.timestamp*1000,todaydate.timestamp*1000]
     payload={
-        "serialNumber": os.environ.get("serialNumber","27043b125bbab5a1"),
+        "serialNumber": os.environ.get("BOX_ID","27043b125bbab5a1"),
         "devicepass": os.environ.get("devicepass","123456"),
         "tasktype": "7",
         "data": json.dumps(datav)
