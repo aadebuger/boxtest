@@ -10,8 +10,8 @@ headers = {
     "Content-Type": "application/json; charset=UTF-8"
     }
 payload={
-	"serialNumber": "068bebf627d6ab24",
-	"devicepass": "123456",
+	"serialNumber": os.environ.get("BOX_ID","3dcc6b61375ee359"),
+	"devicepass": os.environ.get("devicepass","626364"),
 	"tasktype": "7",
 	"data": "[0,10,0,0]"
 }
@@ -20,8 +20,8 @@ response = requests.post(url, data=json.dumps(payload), headers=headers).text
 print(response)
 print("hello")
 payload={
-	"serialNumber": "068bebf627d6ab24",
-	"devicepass": "123456",
+	"serialNumber": os.environ.get("BOX_ID","3dcc6b61375ee359"),
+	"devicepass": os.environ.get("devicepass","626364"),
 	"tasktype": "7",
 	"data": "[0,100,0,0]"
 }
@@ -31,8 +31,8 @@ print(response)
 print("hello")
 
 payload={
-	"serialNumber": "068bebf627d6ab24",
-	"devicepass": "123456",
+	"serialNumber": os.environ.get("BOX_ID","3dcc6b61375ee359"),
+	"devicepass": os.environ.get("devicepass","626364"),
 	"tasktype": "23",
 	"data": ""
 }
@@ -59,8 +59,8 @@ print("hello")
 def querybyid(id):
 	idv=[id]
 	payload={
-		"serialNumber": "068bebf627d6ab24",
-		"devicepass": "123456",
+		"serialNumber": os.environ.get("BOX_ID","3dcc6b61375ee359"),
+		"devicepass": os.environ.get("devicepass","626364"),
 		"tasktype": "9",
 		"data": json.dumps(idv)
 	}
@@ -72,8 +72,8 @@ for id in range(1,100):
 
 def queryrulebyid(id):
 	payload={
-		"serialNumber": "068bebf627d6ab24",
-		"devicepass": "123456",
+		"serialNumber": os.environ.get("BOX_ID","3dcc6b61375ee359"),
+		"devicepass": os.environ.get("devicepass","626364"),
 		"tasktype": "38",
 		"data": json.dumps(id)
 	}
@@ -93,8 +93,8 @@ def uploadperson():
 		data['base64'] = base64_data.decode("utf8")
 
 	payload={
-		"serialNumber": "068bebf627d6ab24",
-		"devicepass": "123456",
+		"serialNumber": os.environ.get("BOX_ID","3dcc6b61375ee359"),
+		"devicepass": os.environ.get("devicepass","626364"),
 		"tasktype": "6",
 		"data": json.dumps(data)
 	}
@@ -105,8 +105,8 @@ def uploadperson():
 queryrulebyid(72)
 def uploadrule():
 		payload={
-			"serialNumber": "068bebf627d6ab24",
-			"devicepass": "123456",
+			"serialNumber": os.environ.get("BOX_ID","3dcc6b61375ee359"),
+			"devicepass": os.environ.get("devicepass","626364"),
 			"tasktype": "37",
 			"data": {
 				"name": "早上1",
@@ -123,8 +123,8 @@ def uploadrule():
 
 datav=[0,200,yest.timestamp*1000,todaydate.timestamp*1000]
 payload={
-	"serialNumber": "068bebf627d6ab24",
-	"devicepass": "123456",
+	"serialNumber": os.environ.get("BOX_ID","3dcc6b61375ee359"),
+	"devicepass": os.environ.get("devicepass","626364"),
 	"tasktype": "7",
 	"data": json.dumps(datav)
 }

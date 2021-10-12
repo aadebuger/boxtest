@@ -3,4 +3,5 @@ cd /home/ubuntu/boxtest
 sleep 30
 source ~/jncloudvenv3/bin/activate
 export BOX_ID=3dcc6b61375ee359
+export devicepass=626364
 nohup python boxmonitor.py>>boxmonitor.out  2>&1 &
