@@ -104,8 +104,8 @@ def boxlog(name):
     url="http://192.168.124.43:8088/sendData"
     value=[name]
     payload={
-        "serialNumber": os.environ.get("BOX_ID","270443b125bbab521"),
-        "devicepass": "123456",
+        "serialNumber": os.environ.get("BOX_ID","3dcc6b61375ee359"),
+        "devicepass": os.environ.get("devicepass","626364"),
         "tasktype": "16",
         "data": json.dumps(value)
     }
@@ -131,8 +131,8 @@ def boxlogbypage(first,end,firstt,endt,flag):
     url="http://192.168.124.43:8088/sendData"
     value=[first,end,firstt,endt,flag]
     payload={
-        "serialNumber": os.environ.get("BOX_ID","270443b125bbab521"),
-        "devicepass": "123456",
+        "serialNumber": os.environ.get("BOX_ID","3dcc6b61375ee359"),
+        "devicepass": os.environ.get("devicepass","626364"),
         "tasktype": "15",
         "data": json.dumps(value)
     }
@@ -160,8 +160,8 @@ def boxlogbypageold(first,end,firstt,endt,flag):
     url="http://192.168.124.43:8088/sendData"
     value=[first,end,firstt,endt,flag]
     payload={
-        "serialNumber": os.environ.get("BOX_ID","270443b125bbab521"),
-        "devicepass":  os.environ.get("devicepass","123456"),
+        "serialNumber": os.environ.get("BOX_ID","3dcc6b61375ee359"),
+        "devicepass":  os.environ.get("devicepass","626364"),
         "tasktype": "15",
         "data": json.dumps(value)
     }
