@@ -102,7 +102,7 @@ def studentlist():
 def studentlistbyuserlevel(userlevel):
     Todo = leancloud.Object.extend('Student')
     query = Todo.query
-    query.equal_to("userLevel",userlevel)
+    query.equal_to("group",userlevel)
 
     query_result = query.find()
     conv=[]
@@ -164,7 +164,7 @@ def processlessonbyuserLevel(newlesson):
         if serial is not None:
             serialdict[serial]=name
     print("serialdiict",serialdict)
-    userlevel = newlesson.get("userLevel")
+    userlevel = newlesson.get("group")
     memberv = getMembervbyuserlevel(userlevel)
     print("memberv=",memberv)
 
